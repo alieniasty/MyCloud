@@ -1,0 +1,85 @@
+﻿.login-group .form-control, .input-group-addon {
+    background: #ffffff;
+    background: rgba(255,255,255,1.0);
+    outline: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.login-group {
+    text-align: center;
+}
+
+#input-user-div > span {
+    border-bottom-left-radius: 0;
+}
+
+#input-user-div > input {
+    border-bottom-right-radius: 0;
+}
+
+#input-password-div > span:nth-child(1) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#input-password-div > span:nth-child(3) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    cursor: pointer;
+}
+
+#input-confirm-div > span:nth-child(1) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#input-confirm-div > input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#input-email-div > span:nth-child(1) {
+    border-top-left-radius: 0;
+}
+
+#input-email-div > input {
+    border-top-right-radius: 0;
+}
+
+#cloud-img {
+    height: 50%;
+    width: 50%;
+    margin-bottom: 5px;
+    position: relative;
+} 
+
+#title {
+    font-size: 29px;
+    text-align: center;
+}
+
+.access-btn {
+    margin-top: 10px;
+}
+
+#log-in-btn {
+    padding: 10px 23px;
+}
+
+.cloud-img-div {
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 767px) {
+    .access-btn {
+        margin-top: 85px;
+    }
+}

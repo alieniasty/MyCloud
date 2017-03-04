@@ -11,12 +11,10 @@ namespace MyCloud.Controllers
 {
     public class HomeController : Controller
     {
-        private ICloudRepository _repository;
         private SignInManager<CloudUser> _signInManager;
 
-        public HomeController(ICloudRepository repository, SignInManager<CloudUser> signInManager)
+        public HomeController(SignInManager<CloudUser> signInManager)
         {
-            _repository = repository;
             _signInManager = signInManager;
         }
 
@@ -32,6 +30,31 @@ namespace MyCloud.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel vm)
+        {
+            /*if (ModelState.IsValid)
+            {
+                var signInResult = await _signInManager.PasswordSignInAsync(vm.Username, vm.Password, true, false);
+                if (signInResult.Succeeded)
+                {
+                    
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+
+            return Accepted();*/
+            return RedirectToAction("MainPanel", "Logged");
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel vm)
         {
             /*if (ModelState.IsValid)
             {

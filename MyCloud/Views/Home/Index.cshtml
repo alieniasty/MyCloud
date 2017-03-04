@@ -5,9 +5,7 @@
 @section Scripts {
     
     <link href="~/css/index.css" rel="stylesheet" />
-
     <script src="~/js/index.js"></script>
-    <script src="~/lib/angular/angular.min.js"></script>
 }
 
 <div class="cloud-img-div col-md-4 col-md-offset-4">
@@ -38,6 +36,6 @@
     
     <button class="access-btn btn btn-success btn-lg center-block" id="log-in-btn" type="submit">Log in</button>
 
-    <a href="#">Register</a>
+    <a asp-action="Register" asp-controller="Home">Register</a>
 </form>
 

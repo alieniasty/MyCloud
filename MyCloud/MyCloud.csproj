@@ -9,11 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\css\register.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="wwwroot\css\index.css" />
     <Content Include="wwwroot\images\__dummy__" />
     <Content Include="wwwroot\img\cloud-img.ico" />
     <Content Include="wwwroot\img\Graphicloads-100-Flat-2-Cloud.ico" />
+    <Content Include="wwwroot\js\app-index.js" />
+    <Content Include="wwwroot\js\appIndex.js" />
+    <Content Include="wwwroot\js\controllerIndex.js" />
+    <Content Include="wwwroot\js\index - Copy.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="wwwroot\js\index.js" />
+    <Content Include="wwwroot\js\register.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
