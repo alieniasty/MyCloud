@@ -1,0 +1,28 @@
+﻿@model MyCloud.ViewModel.CloudUserViewModel
+@section Scripts
+{
+    <link href="~/css/panel.css" rel="stylesheet" />
+    <script src="~/js/uiPanel.js"></script>
+}
+
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle fa fa-toggle-off" data-toggle="collapse" data-target="#myNavbar" id="js-navbar-toggle"></button>
+            <a class="navbar-brand" asp-action="Panel" asp-controller="App">
+                <img src="~/img/cloud-img.ico" alt="Brand" />
+                <span>My cloud</span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-action="Logout" asp-controller="App"><i class="fa fa-sign-out"></i> <span> Logout</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

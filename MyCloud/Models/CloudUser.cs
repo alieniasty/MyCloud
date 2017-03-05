@@ -9,6 +9,6 @@ namespace MyCloud.Models
 {
     public class CloudUser : IdentityUser
     {
-        public string ShareLink { get; set; }
+        public DateTime Registered;
     }
 }

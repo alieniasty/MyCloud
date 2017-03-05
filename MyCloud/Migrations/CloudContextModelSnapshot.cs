@@ -155,8 +155,6 @@ namespace MyCloud.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("ShareLinks");
-
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")

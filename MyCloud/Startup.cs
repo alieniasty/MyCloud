@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyCloud.Models;
+using MyCloud.ViewModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MyCloud
 {
@@ -39,10 +44,19 @@ namespace MyCloud
             services.AddEntityFrameworkSqlite();
 
             services
-                .AddIdentity<CloudUser, IdentityRole>()
+                .AddIdentity<CloudUser, IdentityRole>(config =>
+                {
+                    config.User.RequireUniqueEmail = true;
+                    config.Password.RequiredLength = 8;
+                    config.Cookies.ApplicationCookie.LoginPath = "/Home/Login";
+                })
                 .AddEntityFrameworkStores<CloudContext>();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(config =>
+            {
+                config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                config.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,13 +78,20 @@ namespace MyCloud
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<CloudUser, CloudUserViewModel>();
+            });
+
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }

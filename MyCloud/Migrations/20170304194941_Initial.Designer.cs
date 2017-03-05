@@ -8,7 +8,7 @@ using MyCloud.Models;
 namespace MyCloud.Migrations
 {
     [DbContext(typeof(CloudContext))]
-    [Migration("20170228233352_Initial")]
+    [Migration("20170304194941_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,8 +155,6 @@ namespace MyCloud.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<string>("ShareLinks");
 
                     b.Property<bool>("TwoFactorEnabled");
 
