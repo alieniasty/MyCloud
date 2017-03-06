@@ -26,12 +26,17 @@ namespace MyCloud.Controllers
 
         public async Task<IActionResult> Panel()
         {
-            var userId = _userManager.GetUserId(User);
-            var user = await _userManager.FindByIdAsync(userId);
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = _userManager.GetUserId(User);
+                var user = await _userManager.FindByIdAsync(userId);
 
-            var userFields = Mapper.Map<CloudUserViewModel>(user);
+                var userFields = Mapper.Map<CloudUserViewModel>(user);
 
-            return View(userFields);
+                return View(userFields);
+            }
+
+            return RedirectToAction("Login", "Home");
         }
 
         public async Task<IActionResult> Logout()

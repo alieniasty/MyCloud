@@ -14,12 +14,12 @@
     <Content Include="wwwroot\css\register.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="wwwroot\css\index.css" />
     <Content Include="wwwroot\img\cloud-img.ico" />
-    <Content Include="wwwroot\js\app-mainPanel.js" />
-    <Content Include="wwwroot\js\index.js" />
+    <Content Include="wwwroot\js\appPanel.js" />
     <Content Include="wwwroot\js\login.js" />
+    <Content Include="wwwroot\js\panelController.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
+    <Content Include="wwwroot\views\panelView.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="5.2.0" />
@@ -41,9 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\views\" />
   </ItemGroup>
 
 </Project>
