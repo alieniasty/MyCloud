@@ -1,96 +1,14 @@
-﻿.cloud-navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
+﻿.used-space-circle {
+    text-align: center !important;
+    padding-top: 30px;
 }
 
-img {
-    width: 29%;
+.used-space-info {
+    text-align: center !important;
+    padding-top: 15px;
 }
 
-#myNavbar > ul > li > a {
-    font-size: 1.1em;
+.raspberry-ico {
+    padding-top: 65px;
+    text-align: center !important;
 }
-
-/*Overrides*/
-
-.navbar {
-    min-height: 80px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ccccce;
-    border-radius: 0;
-}
-
-@media (max-width: 400px) {
-    img {
-        width: 30%;
-    }
-
-    #js-navbar-toggle {
-        display: inline-block;
-    }
-}
-
-.navbar-brand {
-    width: 200px;
-    float: left;
-    height: 80px;
-    padding: 15px 15px;
-    font-size: 24px;
-    line-height: 50px;
-    display: inline-flex;
-}
-
-.navbar-brand > span {
-    color: #13A38D;
-}
-
-.navbar-toggle {
-    position: fixed;
-    right: 5px;
-    padding: 9px 10px;
-    margin-top: 30px;
-    border: 1px solid transparent;
-    border-radius: 20px;
-}
-
-.navbar-brand > span {
-    margin-left: 10px;
-}
-
-.navbar-nav > li > a {
-    line-height: 50px;
-    color: #13A38D;
-}
-
-.navbar-nav > li:after {
-    position: absolute;
-    content: '';
-    width: 0;
-    border-bottom: solid 3px #13A38D;
-    transition: all 300ms ease-in-out;
-}
-
-.nav > li:hover:after, .nav > li:focus:after {
-    text-decoration: none;
-    width: 100%;
-}
-
-.navbar-nav > li > a > span {
-    font-size: 1.3em;
-}
-
-.navbar-nav > li > a > i {
-    font-size: 1.4em;
-}
-
-.fa.fa-toggle-off {
-    display: none; 
-    font: normal normal normal 14px FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-

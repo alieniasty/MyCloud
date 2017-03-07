@@ -1,12 +1,14 @@
 ﻿@model MyCloud.ViewModel.CloudUserViewModel
 @section Scripts
 {
-    <link href="~/css/panel.css" rel="stylesheet" />
+    <link href="~/css/navigation.css" rel="stylesheet" />
     <script src="~/js/uiPanel.js"></script>
     <script src="~/lib/angular/angular.min.js"></script>
     <script src="~/lib/angular-route/angular-route.min.js"></script>
     <script src="~/js/appPanel.js"></script>
     <script src="~/js/panelController.js"></script>
+    <link href="~/css/panel.css" rel="stylesheet" />
+    <link href="~/css/circle.css" rel="stylesheet" />
 }
 
 <nav class="navbar navbar-fixed-top">
@@ -20,12 +22,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li><a href="#"><i class="fa fa-folder" aria-hidden="true"></i> Moje pliki</a></li>
+                <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> Udostępnione</a></li>
+                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> Ulubione</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a asp-action="Logout" asp-controller="App"><i class="fa fa-sign-out"></i> <span> Logout</span></a></li>
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span> @Model.Username</span></a></li>
+                <li><a asp-action="Logout" asp-controller="App"><i class="fa fa-sign-out"></i> <span> Wyloguj</span></a></li>
             </ul>
         </div>
     </div>

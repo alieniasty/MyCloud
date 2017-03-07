@@ -9,12 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\css\circle.css" />
     <Content Include="wwwroot\css\login.css" />
+    <Content Include="wwwroot\css\navigation.css" />
     <Content Include="wwwroot\css\panel.css" />
     <Content Include="wwwroot\css\register.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\img\cloud-img.ico" />
+    <Content Include="wwwroot\img\raspberrypi.ico" />
+    <Content Include="wwwroot\img\raspberry_pi.ico" />
+    <Content Include="wwwroot\img\raspberry_pi.png" />
+    <Content Include="wwwroot\img\raspberry_pi1600.ico" />
+    <Content Include="wwwroot\img\raspberry_pi1600.png" />
     <Content Include="wwwroot\js\appPanel.js" />
     <Content Include="wwwroot\js\login.js" />
     <Content Include="wwwroot\js\panelController.js" />

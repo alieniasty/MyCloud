@@ -10,5 +10,11 @@ namespace MyCloud.Models
     public class CloudUser : IdentityUser
     {
         public DateTime Registered;
+
+        public long TotalSpace { get; set; }
+
+        public long UsedSpace { get; set; }
+
+        public long RemainingSpace { get; set; }
     }
 }
