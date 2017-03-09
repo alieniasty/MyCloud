@@ -1,0 +1,21 @@
+﻿<link href="../css/files.css" rel="stylesheet" />
+
+<script src="../js/uiFiles.js"></script>
+
+<div id="sidebar">
+    hello
+</div>
+
+<div id="wrapper">
+    <button id="sidebar-btn" class="fa fa-bars"></button>
+    
+    <div ng-controller="filesController">
+        <input type="file" nv-file-select uploader="uploader" accept="image/*" multiple/> <br />
+        <ul>
+            <li ng-repeat="item in uploader.queue">
+                Name: <span ng-bind="item.file.name"></span> <br />
+                <button ng-click="item.upload()">upload</button>
+            </li>
+        </ul>
+    </div>
+</div>

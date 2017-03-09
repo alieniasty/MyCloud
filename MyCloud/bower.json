@@ -8,6 +8,8 @@
     "jquery-validation-unobtrusive": "3.2.6",
     "font-awesome": "Font-Awesome#v4.7.0",
     "angular": "1.6.2",
-    "angular-route": "1.6.2"
+    "angular-route": "1.6.2",
+    "animate-css": "3.5.2",
+    "angular-file-upload": "2.5.0"
   }
 }
