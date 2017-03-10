@@ -11,7 +11,7 @@
 }
 
 #sidebar.hide-sidebar {
-    left: -250px;
+    left: -226px;
     transition: left ease 0.25s;
 }
 
@@ -23,7 +23,7 @@
 }
 
 #wrapper.hide-sidebar {
-    margin-left: 0;
+    margin-left: 24px;
     transition: margin-left ease 0.25s;
 }
 
@@ -32,4 +32,41 @@
     background-color: transparent;
     color: #13a38d;
     font-size: 2em;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    cursor: pointer;
+    color: #ECECEE;
+    display: inline-block;
+    font-weight: normal;
+    width: 250px;
+    line-height: 40px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover, #add-new-file-Btn > label > i:hover {
+    color: #13a38d;
+    background-color: #ececee;
+}
+
+#add-new-file-Btn {
+    position: fixed;
+    bottom: 25px;
+}
+
+#add-new-file-Btn > label > span {
+    padding-left: 15px;
+}
+
+#add-new-file-Btn > label > i {
+    line-height: 40px;
 }
