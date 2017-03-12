@@ -91,8 +91,9 @@ namespace MyCloud
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Login}/{id?}");
-            });
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Login" });
+        });
         }
     }
 }

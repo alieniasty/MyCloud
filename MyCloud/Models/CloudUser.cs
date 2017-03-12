@@ -16,5 +16,7 @@ namespace MyCloud.Models
         public long UsedSpace { get; set; }
 
         public long RemainingSpace { get; set; }
+
+        public ICollection<FileData> Base64Files { get; set; }
     }
 }

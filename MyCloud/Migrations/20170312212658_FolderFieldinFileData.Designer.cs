@@ -8,9 +8,10 @@ using MyCloud.Models;
 namespace MyCloud.Migrations
 {
     [DbContext(typeof(CloudContext))]
-    partial class CloudContextModelSnapshot : ModelSnapshot
+    [Migration("20170312212658_FolderFieldinFileData")]
+    partial class FolderFieldinFileData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752");
