@@ -4,10 +4,9 @@
 
 <div ng-controller="filesController">
     <div id="sidebar">
-        <ul class="nav">
-            <li id="add-new-file-Btn">
-                <input type="file" name="files" id="files" nv-file-select uploader="uploader" accept="image/*" class="inputfile" multiple />
-                <label for="files"><span>Dodaj pliki</span> <i class="fa fa-file-image-o fa-2x pull-right"></i></label>
+        <ul class="nav files-nav">
+            <li>
+                <a ng-click="toggleFilesInput = !toggleFilesInput">Dodaj pliki <i class="fa fa-file-image-o fa-2x pull-right"></i></a>
             </li>
         </ul>
     </div>
@@ -17,46 +16,6 @@
             <button id="sidebar-btn" class="fa fa-bars"></button>
         </div>
 
-        <div class="img-preview-wrapper col-md-10 col-md-offset-1">
-            
-            <div class="col-md-8 col-md-offset-2 btn-img-preview-group">
-
-                <button ng-click="uploader.uploadAll()" class="btn btn-img-preview btn-upload" ng-disabled="uploader.queue.length == 0">
-                    <i class="fa fa-cloud-upload"></i>
-                    <span> Wgraj pliki</span>
-                </button>
-
-                <button ng-click="uploader.cancelAll()" class="btn btn-img-preview btn-warning" ng-disabled="uploader.queue.length == 0">
-                    <i class="fa fa-ban"></i>
-                    <span> Przerwij wgrywanie</span>
-                </button>
-
-                <button ng-click="uploader.clearQueue()" class="btn btn-img-preview btn-danger" ng-disabled="uploader.queue.length == 0">
-                    <i class="fa fa-trash"></i>
-                    <span> Anuluj</span>
-                </button>
-            </div>
-            
-            <div nv-file-drop uploader="uploader" over-class="file-over">
-                <div class="file-drop col-md-8 col-md-offset-2" nv-file-over uploader="uploader" over-class="file-over">
-                    <i class="fa fa-upload" aria-hidden="true"></i><br/>
-                    <span>Przeciągnij i upuść pliki</span>
-                </div>
-            </div>
-
-            <div class="col-md-10 col-md-offset-1">
-                <div class="img-preview" ng-repeat="item in uploader.queue">
-                    <span> {{item.file.name}} </span>
-                    <div ng-thumb="{file: item._file, height: 100}"></div>
-                    
-                    <i class="fa fa-circle-o-notch fa-spin fa-2x" ng-show="item.isUploading"></i>
-                    
-                    <button ng-click="item.remove()" class="btn-img-preview btn-danger btn-xs-preview" ng-show="!item.isUploading">
-                        <i class="fa fa-trash"></i>
-                        <span> Usuń plik</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <div ng-if="toggleFilesInput" ng-include="'/views/addFiles.html'"></div>
     </div>
 </div>

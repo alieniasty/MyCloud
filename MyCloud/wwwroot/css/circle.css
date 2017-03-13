@@ -854,16 +854,16 @@
   color: #c6ff00;
 }
 .c100.green .bar, .c100.green .fill {
-  border-color: #13a38d !important;
+  border-color: #39a349 !important;
 }
 .c100.green:hover > span {
-  color: #13a38d;
+  color: #39a349;
 }
 .c100.green.dark .bar, .c100.green.dark .fill {
-  border-color: #13a38d !important;
+  border-color: #39a349 !important;
 }
 .c100.green.dark:hover > span {
-  color: #13a38d;
+  color: #39a349;
 }
 .c100.orange .bar, .c100.orange .fill {
   border-color: #dd9d22 !important;

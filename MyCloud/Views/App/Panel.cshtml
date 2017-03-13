@@ -29,13 +29,13 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#!/files"><i class="fa fa-folder" aria-hidden="true"></i> Moje pliki</a></li>
-                    <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> Udostępnione</a></li>
-                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> Ulubione</a></li>
+                    <li><a href="#!/files"><i class="fa fa-folder" aria-hidden="true"></i> <p>Moje pliki</p></a></li>
+                    <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> <p>Udostępnione</p></a></li>
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <p>Ulubione</p></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span> @Model.Username</span></a></li>
-                    <li><a asp-action="Logout" asp-controller="App"><i class="fa fa-sign-out"></i> <span> Wyloguj</span></a></li>
+                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <p> @Model.Username</p></a></li>
+                    <li><a asp-action="Logout" asp-controller="App"><i class="fa fa-sign-out"></i> <p> Wyloguj</p></a></li>
                 </ul>
             </div>
         </div>

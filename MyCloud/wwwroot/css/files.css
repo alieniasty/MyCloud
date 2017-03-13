@@ -1,5 +1,5 @@
 ﻿#sidebar {
-    background-color: #13A38D;
+    background-color: #73dd83;
     color: #ECECEE;
     position: fixed;
     height: 100%;
@@ -11,7 +11,7 @@
 }
 
 #sidebar.hide-sidebar {
-    left: -215px;
+    left: -200px;
     transition: left ease 0.25s;
 }
 
@@ -31,7 +31,7 @@
 #sidebar-btn {
     border: 0;
     background-color: transparent;
-    color: #13a38d;
+    color: #73dd83;
     font-size: 2em;
 }
 
@@ -44,31 +44,17 @@
 	z-index: -1;
 }
 
-.inputfile + label {
-    cursor: pointer;
-    color: #ECECEE;
-    display: inline-block;
-    font-weight: normal;
-    width: 250px;
-    line-height: 40px;
+.btn-img-preview-group > label > i {
     padding-right: 5px;
-    padding-left: 5px;
 }
 
-.inputfile:focus + label,
-.inputfile + label:hover, #add-new-file-Btn > label > i:hover {
+.files-nav {
+    line-height: 30px;
+}
+
+.files-nav a {
     color: white;
-    background-color: #31b29d;
-}
-
-#add-new-file-Btn {
-    position: fixed;
-    bottom: 25px;
-}
-
-#add-new-file-Btn > label > i {
-    line-height: 40px;
-    color: #8ED2C9;
+    cursor: pointer
 }
 
 .img-preview {
@@ -100,7 +86,6 @@
 }
 
 .btn-upload:hover, .btn-upload:focus {
-    background-color: #5cb85c;
     color: #ffffff;
 }
 

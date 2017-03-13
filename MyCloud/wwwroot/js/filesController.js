@@ -52,14 +52,6 @@
         ]);
 
     function filesController() {
-        var vm = this;
-
-        vm.queueFull = null;
-
-        if (uploader.queue.length > 0) {
-            vm.queueFull = true;
-        }
-
-        vm.queueFull = false;
+        
     }
 })();
