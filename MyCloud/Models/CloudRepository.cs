@@ -32,5 +32,21 @@ namespace MyCloud.Models
 
             _context.SaveChangesAsync();
         }
+
+        public IEnumerable<string> GetBase64Files(string folder, string identityName)
+        {
+            var fileCodes = _context.CloudUsers
+                .Where(user => user.UserName == identityName)
+                .Select(user => new
+                {
+                    user,
+                    userFiles = user.Base64Files.Where(files => files.Folder == folder),
+                    codes = user.Base64Files.Select(files => files.Base64Code)
+                })
+                .SelectMany(user => user.codes)
+                .ToList();
+
+            return fileCodes;
+        }
     }
 }

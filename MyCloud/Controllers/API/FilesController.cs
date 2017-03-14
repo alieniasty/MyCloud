@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -41,6 +42,12 @@ namespace MyCloud.Controllers.API
             }
 
             return Created("/api/[controller]/upload", file);
+        }
+
+        [HttpGet("getJsonFiles")]
+        public async Task<IActionResult> GetJsonFiles(string folder)
+        {
+            var base64FilesCodes = _repository.GetBase64Files(folder, User.Identity.Name);
         }
     }
 }
