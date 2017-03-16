@@ -16,7 +16,7 @@ namespace MyCloud.Models
             _context = context;
         }
 
-        public void AddNewFile(string base64File, string identityName, string fileName, string folder)
+        public async Task<bool> AddNewFileAsync(string base64File, string identityName, string fileName, string folder)
         {
             var userWithFiles = _context.CloudUsers
                 .Include(n => n.Base64Files)
@@ -30,23 +30,22 @@ namespace MyCloud.Models
                 Folder = folder
             });
 
-            _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public IEnumerable<string> GetBase64Files(string folder, string identityName)
         {
-            var fileCodes = _context.CloudUsers
+            var userFiles = _context.CloudUsers
                 .Where(user => user.UserName == identityName)
-                .Select(user => new
-                {
-                    user,
-                    userFiles = user.Base64Files.Where(files => files.Folder == folder),
-                    codes = user.Base64Files.Select(files => files.Base64Code)
-                })
-                .SelectMany(user => user.codes)
+                .SelectMany(user => user.Base64Files)
                 .ToList();
 
-            return fileCodes;
+            var codes = userFiles
+                .Where(files => files.Folder == folder)
+                .Select(files => files.Base64Code)
+                .ToList();
+
+            return codes;
         }
     }
 }

@@ -38,16 +38,33 @@ namespace MyCloud.Controllers.API
 
                 string base64File = Convert.ToBase64String(buffer);
 
-                _repository.AddNewFile(base64File, User.Identity.Name, file.FileName, folder);
+                if (await _repository.AddNewFileAsync(base64File, User.Identity.Name, file.FileName, folder))
+                {
+                    return Created("/api/[controller]/upload", file);
+                }
+
+                return BadRequest($"Creation failed: {file}");
             }
 
-            return Created("/api/[controller]/upload", file);
+            return BadRequest("File is null");
         }
 
         [HttpGet("getJsonFiles")]
-        public async Task<IActionResult> GetJsonFiles(string folder)
+        public IActionResult GetJsonFiles(string folder)
         {
-            var base64FilesCodes = _repository.GetBase64Files(folder, User.Identity.Name);
+            if (folder == null)
+            {
+                return BadRequest("No folder name was provided");
+            }
+
+            var base64FilesCodes = _repository.GetBase64Files(folder, /*User.Identity.Name*/"User1");
+
+            if (base64FilesCodes == null || !base64FilesCodes.Any())
+            {
+                return BadRequest("Files codes list is null");
+            }
+
+            return Ok(base64FilesCodes);
         }
     }
 }

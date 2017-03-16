@@ -11,7 +11,7 @@
                     removeAfterUpload: true,
                     formData: [
                     {
-                        folder: "folder1"
+                        folder: "folder3"
                     }]
                 });
             }
