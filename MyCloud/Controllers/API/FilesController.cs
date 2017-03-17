@@ -57,8 +57,8 @@ namespace MyCloud.Controllers.API
                 return BadRequest("No folder name was provided");
             }
 
-            var base64FilesCodes = _repository.GetBase64Files(folder, /*User.Identity.Name*/"User1");
-
+            var base64FilesCodes = _repository.GetBase64Files(folder, User.Identity.Name);
+            
             if (base64FilesCodes == null || !base64FilesCodes.Any())
             {
                 return BadRequest("Files codes list is null");

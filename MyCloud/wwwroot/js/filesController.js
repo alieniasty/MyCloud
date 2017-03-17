@@ -3,20 +3,8 @@
 
     angular
         .module('appPanel')
-        .controller('filesController',
-        [
-            '$scope', 'FileUploader', function($scope, FileUploader) {
-                var uploader = $scope.uploader = new FileUploader({
-                    url: '/api/files/upload',
-                    removeAfterUpload: true,
-                    formData: [
-                    {
-                        folder: "folder3"
-                    }]
-                });
-            }
-        ])
-        .directive('ngThumb',
+        .controller('filesController', filesController)
+        .directive('ngDownloadPreview',
         [
             '$window', function ($window) {
                 return {
@@ -24,34 +12,40 @@
                     template: '<canvas/>',
                     link: function (scope, element, attributes) {
 
-                        var params = scope.$eval(attributes.ngThumb);
+                        var params = scope.$eval(attributes.ngDownloadPreview);
 
                         var canvas = element.find('canvas');
-                        var reader = new FileReader();
 
-                        reader.onload = onLoadFile;
-                        reader.readAsDataURL(params.file);
-
-                        function onLoadFile(event) {
-                            var img = new Image();
-                            img.onload = onLoadImage;
-                            img.src = event.target.result;
-                        }
-
-                        function onLoadImage() {
-                            var width = params.width || this.width / this.height * params.height;
-                            var height = params.height || this.height / this.width * params.width;
-                            canvas.attr({ width: width, height: height });
+                        var img = new Image();
+                        img.src = "data:image/png;base64,".concat(params.base64Code);
+                        img.onload = function () {
+                            canvas.attr({ width: 100, height: 100 });
                             var ctx = canvas[0].getContext('2d');
-                            ctx.globalAlpha = 0.5;
-                            ctx.drawImage(this, 0, 0, width, height);
+                            ctx.drawImage(this, 0, 0, 100, 100);
                         }
                     }
                 }
             }
         ]);
 
-    function filesController() {
-        
+    function filesController($http) {
+
+        var base64UserFiles = this;
+
+        base64UserFiles.codes = [];
+
+        $http({
+
+            url: '/api/files/getJsonFiles',
+            method: "GET",
+            params: { folder: 'folder3' }
+
+        }).then(function (response) {
+
+            angular.forEach(response.data,
+                function(key, value) {
+                    base64UserFiles.codes.push(key);
+                });
+        });
     }
 })();

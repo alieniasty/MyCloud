@@ -23,10 +23,10 @@
     </Content>
     <Content Include="wwwroot\img\cloud-img.ico" />
     <Content Include="wwwroot\img\raspberrypi.ico" />
+    <Content Include="wwwroot\js\addFilesController.js" />
     <Content Include="wwwroot\js\appPanel.js" />
     <Content Include="wwwroot\js\filesController.js" />
     <Content Include="wwwroot\js\login.js" />
-    <Content Include="wwwroot\js\panelController.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
     <Content Include="wwwroot\views\addFiles.html" />
