@@ -12,15 +12,13 @@
     </div>
     
     <div id="wrapper">
-        <div class="col-md-1">
-            <button id="sidebar-btn" class="fa fa-bars"></button>
-        </div>
+        <button id="sidebar-btn" class="fa fa-bars"></button>
 
         <div ng-controller="addFilesController">
             <div ng-if="toggleFilesInput" ng-include="'/views/addFiles.html'"></div>
         </div>
 
-        <div class="img-preview-wrapper col-md-10 col-md-offset-3">
+        <div class="img-preview-wrapper col-md-10 col-md-offset-2">
             <div class="img-preview" ng-repeat="code in base64UserFiles.codes">
                 <div ng-download-preview="{base64Code: code}"></div>
             </div>

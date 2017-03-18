@@ -19,9 +19,9 @@
                         var img = new Image();
                         img.src = "data:image/png;base64,".concat(params.base64Code);
                         img.onload = function () {
-                            canvas.attr({ width: 100, height: 100 });
+                            canvas.attr({ width: 150, height: 100 });
                             var ctx = canvas[0].getContext('2d');
-                            ctx.drawImage(this, 0, 0, 100, 100);
+                            ctx.drawImage(this, 0, 0, 150, 100);
                         }
                     }
                 }
