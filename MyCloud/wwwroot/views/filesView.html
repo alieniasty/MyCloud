@@ -18,7 +18,7 @@
             <div ng-if="toggleFilesInput" ng-include="'/views/addFiles.html'"></div>
         </div>
 
-        <div class="img-preview-wrapper col-md-10 col-md-offset-2">
+        <div class="img-preview-wrapper col-md-10 col-md-offset-3">
             <div class="img-preview" ng-repeat="code in base64UserFiles.codes">
                 <div ng-download-preview="{base64Code: code}"></div>
             </div>
