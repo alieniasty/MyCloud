@@ -6,7 +6,7 @@
         .controller('filesController', filesController)
         .directive('ngDownloadPreview',
         [
-            '$window', function ($window) {
+            '$window', '$timeout', function ($window, $timeout) {
                 return {
                     restrict: 'A',
                     template: '<canvas/>',
@@ -18,11 +18,19 @@
 
                         var img = new Image();
                         img.src = "data:image/png;base64,".concat(params.base64Code);
+
                         img.onload = function () {
                             canvas.attr({ width: 150, height: 100 });
                             var ctx = canvas[0].getContext('2d');
                             ctx.drawImage(this, 0, 0, 150, 100);
                         }
+
+                        $timeout(function () {
+                            canvas.on("click", function () {
+                                $("#js-modal").css('display', 'block');
+                                $("#js-img-modal")[0].src = img.src;
+                            });
+                        });
                     }
                 }
             }

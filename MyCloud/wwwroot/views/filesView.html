@@ -3,6 +3,7 @@
 <script src="../js/uiFiles.js"></script>
 
 <div ng-controller="filesController as base64UserFiles">
+    
     <div id="sidebar">
         <ul class="nav files-nav">
             <li>
@@ -10,15 +11,21 @@
             </li>
         </ul>
     </div>
-    
+
     <div id="wrapper">
+
+        <div class="modal" id="js-modal">
+            <span class="close">&times;</span>
+            <img src="" alt="Picture" id="js-img-modal" class="img-modal"/>
+        </div>
+
         <button id="sidebar-btn" class="fa fa-bars"></button>
 
         <div ng-controller="addFilesController">
             <div ng-if="toggleFilesInput" ng-include="'/views/addFiles.html'"></div>
         </div>
 
-        <div class="img-preview-wrapper col-md-10 col-md-offset-3">
+        <div class="img-preview-wrapper col-md-10 col-md-offset-1">
             <div class="img-preview" ng-repeat="code in base64UserFiles.codes">
                 <div ng-download-preview="{base64Code: code}"></div>
             </div>

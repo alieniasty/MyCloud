@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-img {
+.cloud-navigation-img {
     width: 29%;
 }
 
@@ -23,7 +23,7 @@ img {
 }
 
 @media (max-width: 400px) {
-    img {
+    .cloud-navigation-img {
         width: 30%;
     }
 
