@@ -168,3 +168,36 @@ canvas:hover {
 .navbar {
     z-index: 1;
 }
+
+.next-picture-modal {
+    position: absolute;
+    top: 50%;
+    right: 35px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.next-picture-modal:hover {
+    color: #e2e2e2;
+}
+
+.previous-picture-modal {
+    position: absolute;
+    top: 50%;
+    left: 35px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.previous-picture-modal:hover {
+    color: #e2e2e2;
+}
+
+.loading {
+    position: fixed;
+    text-align: center;
+}

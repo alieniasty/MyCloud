@@ -5,7 +5,6 @@
         sidebarAndWrapper.toggleClass('hide-sidebar');
     });
 
-    var modal = $("#js-modal");
     var close = $('.close');
 
     close.on('click', function () {

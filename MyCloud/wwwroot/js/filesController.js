@@ -36,11 +36,12 @@
             }
         ]);
 
-    function filesController($http) {
+    function filesController($http, $scope) {
 
         var base64UserFiles = this;
 
         base64UserFiles.codes = [];
+        base64UserFiles.isGettingPreviews = true;
 
         $http({
 
@@ -53,7 +54,20 @@
             angular.forEach(response.data,
                 function(key, value) {
                     base64UserFiles.codes.push(key);
+                    base64UserFiles.isGettingPreviews = false;
                 });
         });
+
+        $scope.selected = { value: 0 };
+
+        $scope.nextPicture = function (index) {
+            if (index >= 0 && index < base64UserFiles.codes.length) {
+                $("#js-img-modal")[0].src = "data:image/png;base64,".concat(base64UserFiles.codes[index]);
+            } else {
+                $scope.selected = { value: 0 };
+            }
+
+            
+        } 
     }
 })();
