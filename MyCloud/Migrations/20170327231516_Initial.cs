@@ -52,8 +52,11 @@ namespace MyCloud.Migrations
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    RemainingSpace = table.Column<long>(nullable: false),
                     SecurityStamp = table.Column<string>(nullable: true),
+                    TotalSpace = table.Column<long>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    UsedSpace = table.Column<long>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
@@ -147,6 +150,46 @@ namespace MyCloud.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "FileData",
+                columns: table => new
+                {
+                    Name = table.Column<string>(nullable: false),
+                    Base64Code = table.Column<string>(nullable: true),
+                    CloudUserId = table.Column<string>(nullable: true),
+                    Folder = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileData", x => x.Name);
+                    table.ForeignKey(
+                        name: "FK_FileData_AspNetUsers_CloudUserId",
+                        column: x => x.CloudUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Folder",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CloudUserId = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Folder", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Folder_AspNetUsers_CloudUserId",
+                        column: x => x.CloudUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
@@ -183,6 +226,16 @@ namespace MyCloud.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileData_CloudUserId",
+                table: "FileData",
+                column: "CloudUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Folder_CloudUserId",
+                table: "Folder",
+                column: "CloudUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -201,6 +254,12 @@ namespace MyCloud.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "FileData");
+
+            migrationBuilder.DropTable(
+                name: "Folder");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

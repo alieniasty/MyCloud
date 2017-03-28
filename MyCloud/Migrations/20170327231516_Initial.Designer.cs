@@ -8,7 +8,7 @@ using MyCloud.Models;
 namespace MyCloud.Migrations
 {
     [DbContext(typeof(CloudContext))]
-    [Migration("20170304194941_Initial")]
+    [Migration("20170327231516_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,9 +154,15 @@ namespace MyCloud.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<long>("RemainingSpace");
+
                     b.Property<string>("SecurityStamp");
 
+                    b.Property<long>("TotalSpace");
+
                     b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<long>("UsedSpace");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
@@ -171,6 +177,41 @@ namespace MyCloud.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("MyCloud.Models.FileData", b =>
+                {
+                    b.Property<string>("Name")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Base64Code");
+
+                    b.Property<string>("CloudUserId");
+
+                    b.Property<string>("Folder");
+
+                    b.HasKey("Name");
+
+                    b.HasIndex("CloudUserId");
+
+                    b.ToTable("FileData");
+                });
+
+            modelBuilder.Entity("MyCloud.Models.Folder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CloudUserId");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CloudUserId");
+
+                    b.ToTable("Folder");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -208,6 +249,20 @@ namespace MyCloud.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MyCloud.Models.FileData", b =>
+                {
+                    b.HasOne("MyCloud.Models.CloudUser")
+                        .WithMany("Base64Files")
+                        .HasForeignKey("CloudUserId");
+                });
+
+            modelBuilder.Entity("MyCloud.Models.Folder", b =>
+                {
+                    b.HasOne("MyCloud.Models.CloudUser")
+                        .WithMany("Folders")
+                        .HasForeignKey("CloudUserId");
                 });
         }
     }

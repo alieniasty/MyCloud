@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot/img\cloud-img.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="wwwroot\css\circle.css" />
     <Content Include="wwwroot\css\files.css" />
     <Content Include="wwwroot\css\login.css" />
@@ -22,6 +18,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\img\cloud-img.ico" />
+    <Content Include="wwwroot\img\cloud-img-white.ico" />
     <Content Include="wwwroot\img\raspberrypi.ico" />
     <Content Include="wwwroot\js\addFilesController.js" />
     <Content Include="wwwroot\js\appPanel.js" />

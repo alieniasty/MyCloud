@@ -196,6 +196,23 @@ namespace MyCloud.Migrations
                     b.ToTable("FileData");
                 });
 
+            modelBuilder.Entity("MyCloud.Models.Folder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CloudUserId");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CloudUserId");
+
+                    b.ToTable("Folder");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -237,6 +254,13 @@ namespace MyCloud.Migrations
                 {
                     b.HasOne("MyCloud.Models.CloudUser")
                         .WithMany("Base64Files")
+                        .HasForeignKey("CloudUserId");
+                });
+
+            modelBuilder.Entity("MyCloud.Models.Folder", b =>
+                {
+                    b.HasOne("MyCloud.Models.CloudUser")
+                        .WithMany("Folders")
                         .HasForeignKey("CloudUserId");
                 });
         }

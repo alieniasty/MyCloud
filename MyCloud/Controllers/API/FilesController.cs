@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCloud.Models;
+using MyCloud.ViewModel;
 
 namespace MyCloud.Controllers.API
 {
@@ -16,12 +12,10 @@ namespace MyCloud.Controllers.API
     public class FilesController : Controller
     {
         private ICloudRepository _repository;
-        private IHostingEnvironment _environment;
 
-        public FilesController(ICloudRepository repository, IHostingEnvironment environment)
+        public FilesController(ICloudRepository repository)
         {
             _repository = repository;
-            _environment = environment;
         }
         
         [HttpPost("upload")]
@@ -29,7 +23,7 @@ namespace MyCloud.Controllers.API
         {
             if (file.Length > 0)
             {
-                byte[] buffer = null;
+                byte[] buffer;
                 using (var fileStream = file.OpenReadStream())
                 {
                     buffer = new byte[fileStream.Length];
@@ -61,10 +55,34 @@ namespace MyCloud.Controllers.API
             
             if (base64FilesCodes == null || !base64FilesCodes.Any())
             {
-                return BadRequest("Files codes list is null");
+                return Ok();
             }
 
             return Ok(base64FilesCodes);
+        }
+
+        [HttpGet("getUserFolders")]
+        public IActionResult GetUserFolders()
+        {
+            var folders = _repository.GetFoldersByUser(User.Identity.Name);
+
+            return Ok(folders);
+        }
+
+        [HttpPost("createNewFolder")]
+        public async Task<IActionResult> CreateNewFolder([FromBody]FolderViewModel folder)
+        {
+            if (folder == null)
+            {
+                return BadRequest("Folder name was not provided.");
+            }
+
+            if (!await _repository.CreateNewFolder(folder.Name, User.Identity.Name))
+            {
+                return BadRequest();
+            }
+
+            return Created("api/[controller]/createNewFolder", true);
         }
     }
 }

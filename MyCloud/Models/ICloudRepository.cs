@@ -6,6 +6,11 @@ namespace MyCloud.Models
     public interface ICloudRepository
     {
         Task<bool> AddNewFileAsync(string base64File, string identityName, string fileName, string folder);
+
         IEnumerable<string> GetBase64Files(string folder, string identityName);
+
+        List<string> GetFoldersByUser(string identityName);
+
+        Task<bool> CreateNewFolder(string folder, string identityName);
     }
 }

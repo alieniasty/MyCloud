@@ -47,5 +47,31 @@ namespace MyCloud.Models
 
             return codes;
         }
+
+        public List<string> GetFoldersByUser(string identityName)
+        {
+            var folders = _context.CloudUsers
+                .Where(u => u.UserName == identityName)
+                .SelectMany(u => u.Folders)
+                .Select(f => f.Name)
+                .ToList();
+
+            return folders;
+        }
+
+        public async Task<bool> CreateNewFolder(string folder, string identityName)
+        {
+            var userWithFolders = _context.CloudUsers
+                .Include(u => u.Folders)
+                .FirstOrDefault(u => u.UserName == identityName);
+
+            userWithFolders.Folders.Add(new Folder
+            {
+                Name = folder
+            });
+
+            return await _context.SaveChangesAsync() > 0;
+
+        }
     }
 }

@@ -51,8 +51,13 @@
 
         }).then(function (response) {
 
+            if (!response.data) {
+                base64UserFiles.isGettingPreviews = false;
+                return;
+            }
+
             angular.forEach(response.data,
-                function(key, value) {
+                function (key, value) {
                     base64UserFiles.codes.push(key);
                     base64UserFiles.isGettingPreviews = false;
                 });

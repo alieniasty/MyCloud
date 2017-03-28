@@ -1,18 +1,21 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('appPanel', ['ngRoute', 'angularFileUpload'])
-        .config(function($routeProvider) {
+    angular.module('appPanel', ['ui.router', 'angularFileUpload'])
+        .config(function ($stateProvider, $urlRouterProvider) {
 
-            $routeProvider.when("/",
+            $urlRouterProvider.when("", "/");
+
+            $stateProvider.state("/",
             {
-                controllerAs: "vm",
+                url: "/",
                 templateUrl: "/views/panelView.html"
             });
 
-            $routeProvider.when("/files",
+            $stateProvider.state("files",
             {
-                controllerAs: "vm",
+                url: "files",
+                controller: "filesController",
                 templateUrl: "/views/filesView.html"
             });
         });
