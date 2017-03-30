@@ -1,0 +1,6 @@
+﻿<div ng-controller="foldersController as userFolders">
+    <div ng-repeat="folderName in userFolders.names track by $index">
+        <a ui-sref="files({folder: folderName})">{{folderName}}</a>
+    </div>
+</div>
+

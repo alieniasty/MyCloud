@@ -14,6 +14,7 @@
 
     <script src="~/js/appPanel.js"></script>
     <script src="~/js/filesController.js"></script>
+    <script src="~/js/foldersController.js"></script>
     <script src="~/js/addFilesController.js"></script>
 }
 
@@ -22,14 +23,14 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle fa fa-toggle-off" data-toggle="collapse" data-target="#myNavbar" id="js-navbar-toggle"></button>
-                <a class="navbar-brand" asp-action="Panel" asp-controller="App" ui-sref="/">
+                <a class="navbar-brand" asp-action="Panel" asp-controller="App" ui-sref="panel">
                     <img class="cloud-navigation-img" src="~/img/cloud-img-white.ico" alt="Brand"/>
                     <span>My cloud</span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a ui-sref="files"><i class="fa fa-folder" aria-hidden="true"></i> <p>Moje pliki</p></a></li>
+                    <li><a ui-sref="folders"><i class="fa fa-folder" aria-hidden="true"></i> <p>Moje pliki</p></a></li>
                     <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> <p>Udostępnione</p></a></li>
                     <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <p>Ulubione</p></a></li>
                 </ul>

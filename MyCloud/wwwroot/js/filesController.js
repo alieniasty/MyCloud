@@ -36,7 +36,9 @@
             }
         ]);
 
-    function filesController($http, $scope) {
+    function filesController($http, $scope, $stateParams) {
+
+        $scope.params = $stateParams; 
 
         var base64UserFiles = this;
 
@@ -47,7 +49,7 @@
 
             url: '/api/files/getJsonFiles',
             method: "GET",
-            params: { folder: 'folder3' }
+            params: { folder: $scope.params.folder }
 
         }).then(function (response) {
 

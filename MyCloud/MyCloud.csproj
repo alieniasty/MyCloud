@@ -23,11 +23,16 @@
     <Content Include="wwwroot\js\addFilesController.js" />
     <Content Include="wwwroot\js\appPanel.js" />
     <Content Include="wwwroot\js\filesController.js" />
+    <Content Include="wwwroot\js\foldersController.js" />
+    <Content Include="wwwroot\js\foldersController.cs" />
     <Content Include="wwwroot\js\login.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
     <Content Include="wwwroot\views\addFiles.html" />
     <Content Include="wwwroot\views\filesView.html" />
+    <Content Include="wwwroot\views\folder.filesView.html" />
+    <Content Include="wwwroot\views\folders.filesView.html" />
+    <Content Include="wwwroot\views\foldersView.html" />
     <Content Include="wwwroot\views\panelView.html" />
   </ItemGroup>
   <ItemGroup>
