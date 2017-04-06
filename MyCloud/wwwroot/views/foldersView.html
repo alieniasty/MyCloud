@@ -1,6 +1,10 @@
-﻿<div ng-controller="foldersController as userFolders">
-    <div ng-repeat="folderName in userFolders.names track by $index">
-        <a ui-sref="files({folder: folderName})">{{folderName}}</a>
+﻿<link href="../css/folders.css" rel="stylesheet" />
+
+<div ng-controller="foldersController as userFolders">
+    <div class="col-md-8 col-md-offset-2 folder-link-repeat-wrapper">
+        <div ng-repeat="folderName in userFolders.names track by $index" class="folder-link-repeat">
+            <a ui-sref="files({folder: folderName})" class="folder-link"> <img src="../img/folder-img.png" class="folder-img"/> {{folderName}}</a>
+        </div>
     </div>
 </div>
 

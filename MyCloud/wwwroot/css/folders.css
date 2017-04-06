@@ -1,0 +1,31 @@
+﻿.folder-link {
+    color: #7f7f7f;
+    background-color: #FCFCFC;
+    padding: 10px 10px 20px;
+    -webkit-box-shadow: 1px 1px 6px 3px rgba(211,211,211,1);
+    -moz-box-shadow: 1px 1px 6px 3px rgba(211,211,211,1);
+    box-shadow: 1px 1px 6px 3px rgba(211,211,211,1);
+    transition: box-shadow 0.3s, color 0.3s;
+}
+
+.folder-link:hover, .folder-link:focus {
+    color: #4CD661;
+    -webkit-box-shadow: 1px 1px 6px 3px rgba(143,228,156,1);
+    -moz-box-shadow: 1px 1px 6px 3px rgba(143,228,156,1);
+    box-shadow: 1px 1px 6px 3px rgba(143,228,156,1);
+    text-decoration: none;
+
+}
+
+.folder-link-repeat-wrapper {
+    text-align: center;
+}
+
+.folder-link-repeat {
+    display: inline-block;
+    padding: 20px 10px 10px 10px;
+}
+
+.folder-img {
+    padding-right: 10px;
+}

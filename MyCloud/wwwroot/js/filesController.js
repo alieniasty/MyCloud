@@ -73,8 +73,20 @@
             } else {
                 $scope.selected = { value: 0 };
             }
-
-            
         } 
+
+        $scope.deleteFile = function(index) {
+            $http({
+
+                url: '/api/files/deleteFile',
+                method: "POST",
+                data: { fileCode: base64UserFiles.codes[index] }
+
+            }).then(function () {
+
+                $("#js-modal").css('display', 'none');
+            });
+        }
+
     }
 })();

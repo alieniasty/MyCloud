@@ -84,5 +84,11 @@ namespace MyCloud.Controllers.API
 
             return Created("api/[controller]/createNewFolder", true);
         }
+
+        [HttpPost("deleteFile")]
+        public async Task<IActionResult> DeleteFile([FromBody]FileViewModel file)
+        {
+            return Ok();
+        }
     }
 }

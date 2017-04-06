@@ -11,6 +11,7 @@
   <ItemGroup>
     <Content Include="wwwroot\css\circle.css" />
     <Content Include="wwwroot\css\files.css" />
+    <Content Include="wwwroot\css\folders.css" />
     <Content Include="wwwroot\css\login.css" />
     <Content Include="wwwroot\css\navigation.css" />
     <Content Include="wwwroot\css\panel.css" />
@@ -19,19 +20,17 @@
     </Content>
     <Content Include="wwwroot\img\cloud-img.ico" />
     <Content Include="wwwroot\img\cloud-img-white.ico" />
+    <Content Include="wwwroot\img\folder-img.png" />
     <Content Include="wwwroot\img\raspberrypi.ico" />
     <Content Include="wwwroot\js\addFilesController.js" />
     <Content Include="wwwroot\js\appPanel.js" />
     <Content Include="wwwroot\js\filesController.js" />
     <Content Include="wwwroot\js\foldersController.js" />
-    <Content Include="wwwroot\js\foldersController.cs" />
     <Content Include="wwwroot\js\login.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
     <Content Include="wwwroot\views\addFiles.html" />
     <Content Include="wwwroot\views\filesView.html" />
-    <Content Include="wwwroot\views\folder.filesView.html" />
-    <Content Include="wwwroot\views\folders.filesView.html" />
     <Content Include="wwwroot\views\foldersView.html" />
     <Content Include="wwwroot\views\panelView.html" />
   </ItemGroup>
