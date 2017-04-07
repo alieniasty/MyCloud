@@ -80,7 +80,7 @@
 
                 url: '/api/files/deleteFile',
                 method: "POST",
-                data: { fileCode: base64UserFiles.codes[index] }
+                data: { base64Code: base64UserFiles.codes[index] }
 
             }).then(function () {
 

@@ -73,5 +73,21 @@ namespace MyCloud.Models
             return await _context.SaveChangesAsync() > 0;
 
         }
+
+        public async Task<bool> DeleteFileAsync(string base64Code, string identityName)
+        {
+            var userWithFiles = _context.CloudUsers
+                .Include(n => n.Base64Files)
+                .FirstOrDefault(n => n.UserName == identityName);
+
+            var file = userWithFiles
+                .Base64Files
+                .FirstOrDefault(f => f.Base64Code == base64Code);
+
+
+            userWithFiles.Base64Files.Remove(file);
+
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }

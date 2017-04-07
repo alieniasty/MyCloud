@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCloud.Models;
@@ -86,8 +87,18 @@ namespace MyCloud.Controllers.API
         }
 
         [HttpPost("deleteFile")]
-        public async Task<IActionResult> DeleteFile([FromBody]FileViewModel file)
+        public async Task<IActionResult> DeleteFile([FromBody]FileViewModel filevm)
         {
+            if (filevm.Base64Code == null)
+            {
+                return BadRequest("File code was not provided");
+            }
+
+            if (!await _repository.DeleteFileAsync(filevm.Base64Code, User.Identity.Name))
+            {
+                return BadRequest();
+            }
+
             return Ok();
         }
     }

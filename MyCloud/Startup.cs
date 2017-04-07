@@ -81,6 +81,7 @@ namespace MyCloud
             Mapper.Initialize(config =>
             {
                 config.CreateMap<CloudUser, CloudUserViewModel>();
+                config.CreateMap<FileViewModel, FileData>();
             });
 
             app.UseStaticFiles();

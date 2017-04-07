@@ -10,6 +10,6 @@ namespace MyCloud.ViewModel
     public class FileViewModel
     {
         [Required]
-        public string FileCode { get; set; }
+        public string Base64Code { get; set; }
     }
 }
