@@ -29,10 +29,12 @@
     <Content Include="wwwroot\js\login.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
+    <Content Include="wwwroot\js\uiRemoveFiles.js" />
     <Content Include="wwwroot\views\addFiles.html" />
     <Content Include="wwwroot\views\filesView.html" />
     <Content Include="wwwroot\views\foldersView.html" />
     <Content Include="wwwroot\views\panelView.html" />
+    <Content Include="wwwroot\views\removeFiles.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="5.2.0" />

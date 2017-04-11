@@ -219,3 +219,7 @@ canvas:hover {
     position: fixed;
     text-align: center;
 }
+
+.selected-canvas-opacity {
+    opacity: 1 !important;
+}
