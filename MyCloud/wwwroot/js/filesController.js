@@ -34,7 +34,26 @@
                     }
                 }
             }
-        ]);
+        ])
+        .directive('selectPreview',
+        [
+
+            '$timeout', function ($timeout) {
+            return {
+                restrict: 'E',
+                templateUrl: "/views/selectPreview.html",
+                link: function (scope, element, attributes) {
+
+                    $timeout(function () {
+
+                        $(element).on('click',
+                            function () {
+                                $(this).children().toggleClass("circle-base-animation-checked");
+                            });
+                    });
+                }
+            }
+        }]);
 
     function filesController($http, $scope, $stateParams) {
 
@@ -43,6 +62,7 @@
         var base64UserFiles = this;
 
         base64UserFiles.codes = [];
+        base64UserFiles.selectedIndexes = [];
         base64UserFiles.isGettingPreviews = true;
 
         $http({
@@ -88,5 +108,31 @@
             });
         }
 
+        $scope.deleteSelectedFiles = function (selectedFiles) {
+
+            base64UserFiles.isGettingPreviews = true; //TODO niech się jakoś dłużej kręci bo za szybki ten POST :)
+
+            angular.forEach(selectedFiles, function(key) {
+                $scope.deleteFile(key);
+            });
+
+            base64UserFiles.isGettingPreviews = false;
+        }
+
+
+        $scope.fileSelected = function(index) {
+
+            if (!base64UserFiles.selectedIndexes.includes(index))
+            {
+                base64UserFiles.selectedIndexes.push(index);
+            } else {
+                base64UserFiles.selectedIndexes = base64UserFiles.selectedIndexes.filter(item => item !== index);
+            }
+        } 
+
+        $scope.clearSelections = function() {
+            base64UserFiles.selectedIndexes = [];
+            $('.circle-base').removeClass('circle-base-animation-checked');
+        }
     }
 })();

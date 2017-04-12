@@ -11,11 +11,11 @@
 
         <button ng-click="uploader.cancelAll()" class="btn btn-img-preview btn-warning" ng-disabled="uploader.queue.length == 0">
             <i class="fa fa-ban"></i>
-            <span> Przerwij wgrywanie</span>
+            <span> Przerwij dodawanie</span>
         </button>
 
         <button ng-click="uploader.clearQueue()" class="btn btn-img-preview btn-danger" ng-disabled="uploader.queue.length == 0">
-            <i class="fa fa-trash"></i>
+            <i class="fa fa-times" aria-hidden="true"></i>
             <span> Anuluj</span>
         </button>
     </div>

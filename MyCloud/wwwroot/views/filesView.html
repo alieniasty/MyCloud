@@ -57,7 +57,7 @@
         <div ng-controller="addFilesController">
             <div ng-if="toggleFilesInput" ng-include="'/views/addFiles.html'"></div>
         </div>
-        
+
         <div ng-if="toggleFilesRemoval" ng-include="'/views/removeFiles.html'"></div>
 
         <div class="loading col-md-4 col-md-offset-4">
@@ -68,6 +68,7 @@
         <div class="img-preview-wrapper col-md-10 col-md-offset-1">
             <div class="img-preview" ng-repeat="code in base64UserFiles.codes track by $index">
                 <div ng-click="selected.value = $index" ng-download-preview="{base64Code: code}"></div>
+                <select-preview ng-if="toggleFilesRemoval" ng-click="fileSelected($index, $event)"></select-preview>
             </div>
         </div>
     </div>

@@ -18,6 +18,8 @@
     <Content Include="wwwroot\css\register.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="wwwroot\css\removeFiles.css" />
+    <Content Include="wwwroot\css\selectFiles.css" />
     <Content Include="wwwroot\img\cloud-img.ico" />
     <Content Include="wwwroot\img\cloud-img-white.ico" />
     <Content Include="wwwroot\img\folder-img.png" />
@@ -29,12 +31,14 @@
     <Content Include="wwwroot\js\login.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
-    <Content Include="wwwroot\js\uiRemoveFiles.js" />
+    <Content Include="wwwroot\js\uiSelect.js" />
+    <Content Include="wwwroot\js\uiSelectFiles.js" />
     <Content Include="wwwroot\views\addFiles.html" />
     <Content Include="wwwroot\views\filesView.html" />
     <Content Include="wwwroot\views\foldersView.html" />
     <Content Include="wwwroot\views\panelView.html" />
     <Content Include="wwwroot\views\removeFiles.html" />
+    <Content Include="wwwroot\views\selectPreview.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="5.2.0" />
