@@ -29,3 +29,18 @@
 .folder-img {
     padding-right: 10px;
 }
+
+.new-folder-btn-wrapper {
+    padding: 20px 10px 10px 10px;
+    vertical-align: -10px;
+    text-align: center;
+}
+
+i.fa.fa-plus-circle {
+    color: #73DD83;
+    cursor: pointer;
+}
+
+i.fa.fa-plus-circle:hover, i.fa.fa-plus-circle:focus {
+    color: #60bc6e;
+}

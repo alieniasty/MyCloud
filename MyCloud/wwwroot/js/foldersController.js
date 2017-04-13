@@ -3,9 +3,27 @@
 
     angular
         .module('appPanel')
-        .controller('foldersController', foldersController);
+        .controller('foldersController', foldersController)
+        .directive('newFolder', function() {
+            return {
+                restrict: 'E',
+                templateUrl: "/views/newFolder.html"
+            }
+        })
+        .directive('enterClick', function () {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+                    element.bind("keypress", function (event) {
+                        if (event.which === 13) {
+                            alert("Nowy Folder!");
+                        }
+                    });
+                }
+        }
+        });
 
-    function foldersController($http) {
+    function foldersController($http, $scope) {
 
         var userFolders = this;
 

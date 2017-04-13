@@ -110,7 +110,7 @@
 
         $scope.deleteSelectedFiles = function (selectedFiles) {
 
-            base64UserFiles.isGettingPreviews = true; //TODO niech się jakoś dłużej kręci bo za szybki ten POST :)
+            base64UserFiles.isGettingPreviews = true; 
 
             angular.forEach(selectedFiles, function(key) {
                 $scope.deleteFile(key);
