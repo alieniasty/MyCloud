@@ -55,7 +55,7 @@
             }
         }]);
 
-    function filesController($http, $scope, $stateParams) {
+    function filesController($http, $scope, $stateParams, $state) {
 
         $scope.params = $stateParams; 
 
@@ -105,6 +105,7 @@
             }).then(function () {
 
                 $("#js-modal").css('display', 'none');
+                $state.go($state.current, {}, { reload: true });
             });
         }
 
@@ -112,11 +113,18 @@
 
             base64UserFiles.isGettingPreviews = true; 
 
-            angular.forEach(selectedFiles, function(key) {
-                $scope.deleteFile(key);
+            angular.forEach(selectedFiles, function (key) {
+
+                $http({
+                    url: '/api/files/deleteFile',
+                    method: "POST",
+                    data: { base64Code: base64UserFiles.codes[key] }
+
+                });
             });
 
             base64UserFiles.isGettingPreviews = false;
+            $state.go($state.current, {}, { reload: true });
         }
 
 

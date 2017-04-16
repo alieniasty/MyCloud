@@ -44,3 +44,12 @@ i.fa.fa-plus-circle {
 i.fa.fa-plus-circle:hover, i.fa.fa-plus-circle:focus {
     color: #60bc6e;
 }
+
+i.fa.fa-minus-circle {
+    color: #73DD83;
+    cursor: pointer;
+}
+
+i.fa.fa-minus-circle:hover, i.fa.fa-minus-circle:focus {
+    color: #60bc6e;
+}

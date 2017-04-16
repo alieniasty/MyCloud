@@ -10,20 +10,32 @@
                 templateUrl: "/views/newFolder.html"
             }
         })
-        .directive('enterClick', function () {
+        .directive('enterClick', [
+            '$state', '$http', function ($state, $http) {
             return {
                 restrict: 'A',
                 link: function(scope, element, attrs) {
                     element.bind("keypress", function (event) {
                         if (event.which === 13) {
-                            alert("Nowy Folder!");
+
+                            var params = scope.$eval(attrs.enterClick);
+
+                            $http({
+                                url: '/api/files/createNewFolder',
+                                method: "POST",
+                                data: {
+                                    "name": params.folderName
+                                }
+                            }).then(function() {
+                                $state.go($state.current, {}, { reload: true });
+                            });
                         }
                     });
                 }
         }
-        });
+        }]);
 
-    function foldersController($http, $scope) {
+    function foldersController($http) {
 
         var userFolders = this;
 

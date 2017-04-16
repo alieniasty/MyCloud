@@ -5,7 +5,7 @@
         .module('appPanel')
         .controller('addFilesController',
         [
-            '$scope', 'FileUploader', function($scope, FileUploader) {
+            '$state', '$scope', 'FileUploader', function($state ,$scope, FileUploader) {
 
                 var uploader = $scope.uploader = new FileUploader({
                     url: '/api/files/upload',
@@ -13,11 +13,16 @@
                     removeAfterUpload: true,
 
                     formData: [
-                    {
+                        {
                             folder: "folder3"
-                    }]
+                        }
+                    ]
 
                 });
+
+                uploader.onCompleteAll = function() {
+                    $state.go($state.current, {}, { reload: true });
+                }
             }
         ])
         .directive('ngThumb',

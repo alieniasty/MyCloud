@@ -6,9 +6,10 @@
         <div ng-repeat="folderName in userFolders.names track by $index" class="folder-link-repeat">
             <a ui-sref="files({folder: folderName})" class="folder-link"> <img src="../img/folder-img.png" class="folder-img"/> {{folderName}}</a>
         </div>
-        <new-folder ng-if="newFolder" class="folder-link-repeat"></new-folder>
+        <new-folder ng-if="newFolderBool" class="folder-link-repeat"></new-folder>
+
         <div class="new-folder-btn-wrapper">
-            <i class="fa fa-plus-circle fa-2x" id="js-newfolder" aria-hidden="true" ng-click="newFolder = !newFolder"></i>
+            <i class="fa fa-plus-circle fa-2x" id="js-newfolder" aria-hidden="true" ng-click="newFolderBool = !newFolderBool"></i>
         </div>
     </div>
 </div>
