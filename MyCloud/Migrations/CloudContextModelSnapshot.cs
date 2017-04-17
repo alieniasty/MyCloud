@@ -185,13 +185,13 @@ namespace MyCloud.Migrations
 
                     b.Property<string>("Base64Code");
 
-                    b.Property<string>("CloudUserId");
-
                     b.Property<string>("Folder");
+
+                    b.Property<int?>("FolderId");
 
                     b.HasKey("Name");
 
-                    b.HasIndex("CloudUserId");
+                    b.HasIndex("FolderId");
 
                     b.ToTable("FileData");
                 });
@@ -252,9 +252,9 @@ namespace MyCloud.Migrations
 
             modelBuilder.Entity("MyCloud.Models.FileData", b =>
                 {
-                    b.HasOne("MyCloud.Models.CloudUser")
+                    b.HasOne("MyCloud.Models.Folder")
                         .WithMany("Base64Files")
-                        .HasForeignKey("CloudUserId");
+                        .HasForeignKey("FolderId");
                 });
 
             modelBuilder.Entity("MyCloud.Models.Folder", b =>

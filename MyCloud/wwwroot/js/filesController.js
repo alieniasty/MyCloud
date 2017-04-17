@@ -142,5 +142,64 @@
             base64UserFiles.selectedIndexes = [];
             $('.circle-base').removeClass('circle-base-animation-checked');
         }
+
+        $scope.folderRemovalClick = function () {
+
+            $.confirm({
+                title: 'Usunięcie folderu',
+                content: '' +
+                '<form action="" class="formName">' +
+                '<div class="form-group">' +
+                '<label>Podaj nazwę folderu aby potwierdzić usunięcie</label>' +
+                '<input type="text" placeholder="Nazwa folderu..." class="name form-control" required />' +
+                '</div>' +
+                '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: 'Zatwierdź',
+                        btnClass: 'btn-danger',
+                        action: function () {
+                            var name = this.$content.find('.name').val();
+                            if (!name) {
+                                $.alert('Nie wprowadzono nazwy folderu');
+                                return false;
+                            }
+
+                            if (name == $scope.params.folder) {
+                                $.confirm({
+                                    title: 'Czy na pewno chcesz usunąć folder:',
+                                    content: '<strong>' + name + ' ?' + '</strong>',
+                                    buttons: {
+                                        usuń: {
+                                            btnClass: 'btn-danger',
+                                            action: function () {
+
+                                                $http({
+                                                    url: '/api/files/deleteFolder',
+                                                    method: "POST",
+                                                    data: { name: $scope.params.folder }
+
+                                                }).then(function() {
+                                                    $state.go('folders', {}, { reload: true });
+                                                });
+                                            }
+                                        },
+                                        anuluj: function () {
+                                            return true;
+                                        }
+                                    }
+                                });
+                            } else {
+                                $.alert('Wprowadzona nazwa nie zgadza się z nazwą aktualnie otwartego folderu.');
+                            }
+                        }
+                    },
+                    cofnij: function () {
+                        return true;
+                    }
+                }
+            });
+        }
+
     }
 })();

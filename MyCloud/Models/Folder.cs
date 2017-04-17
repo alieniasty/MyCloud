@@ -14,5 +14,7 @@ namespace MyCloud.Models
 
         [Required]
         public string Name { get; set; }
+
+        public ICollection<FileData> Base64Files { get; set; }
     }
 }

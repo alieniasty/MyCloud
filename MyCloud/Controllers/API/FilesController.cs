@@ -101,5 +101,21 @@ namespace MyCloud.Controllers.API
 
             return Ok();
         }
+
+        [HttpPost("deleteFolder")]
+        public async Task<IActionResult> DeleteFolder([FromBody] FolderViewModel folder)
+        {
+            if (folder.Name == null)
+            {
+                return BadRequest("Folder name was not provided");
+            }
+
+            if (!await _repository.DeleteFolderAsync(folder.Name, User.Identity.Name))
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
     }
 }

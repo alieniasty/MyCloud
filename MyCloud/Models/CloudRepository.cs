@@ -19,11 +19,15 @@ namespace MyCloud.Models
         public async Task<bool> AddNewFileAsync(string base64File, string identityName, string fileName, string folder)
         {
             var userWithFiles = _context.CloudUsers
-                .Include(n => n.Base64Files)
-                .FirstOrDefault(n => n.UserName == identityName);
+                .Include(u => u.Folders)
+                    .ThenInclude(f => f.Base64Files)
+                .FirstOrDefault(u => u.UserName == identityName);
 
 
-            userWithFiles.Base64Files.Add(new FileData
+            userWithFiles.Folders
+                .Select(f => f.Base64Files)
+                .FirstOrDefault()
+                .Add(new FileData
             {
                 Base64Code = base64File,
                 Name = $"{DateTime.Now}_{fileName}",
@@ -35,15 +39,14 @@ namespace MyCloud.Models
 
         public IEnumerable<string> GetBase64Files(string folder, string identityName)
         {
-            var userFiles = _context.CloudUsers
-                .Where(user => user.UserName == identityName)
-                .SelectMany(user => user.Base64Files)
-                .ToList();
+            var userWithFiles = _context.CloudUsers
+                .Where(u => u.UserName == identityName)
+                .Include(t => t.Folders)
+                    .ThenInclude(f => f.Base64Files)
+                .FirstOrDefault();
 
-            var codes = userFiles
-                .Where(files => files.Folder == folder)
-                .Select(files => files.Base64Code)
-                .ToList();
+            var codes = userWithFiles
+                .Folders.SelectMany(f => f.Base64Files).Select(b => b.Base64Code);
 
             return codes;
         }
@@ -77,17 +80,28 @@ namespace MyCloud.Models
         public async Task<bool> DeleteFileAsync(string base64Code, string identityName)
         {
             var userWithFiles = _context.CloudUsers
-                .Include(n => n.Base64Files)
-                .FirstOrDefault(n => n.UserName == identityName);
-
+                .Where(u => u.UserName == identityName)
+                .Include(t => t.Folders)
+                    .ThenInclude(f => f.Base64Files)
+                .FirstOrDefault();
+        
             var file = userWithFiles
-                .Base64Files
+                .Folders
+                .SelectMany(f => f.Base64Files)
                 .FirstOrDefault(f => f.Base64Code == base64Code);
 
 
-            userWithFiles.Base64Files.Remove(file);
+            var files = userWithFiles.Folders.Select(f => f.Base64Files).FirstOrDefault();
+            files.Remove(file);
 
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteFolderAsync(string folderName, string identityName)
+        {
+            //TODO
+            return await _context.SaveChangesAsync() > 0;
+
         }
     }
 }

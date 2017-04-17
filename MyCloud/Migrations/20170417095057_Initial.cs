@@ -151,26 +151,6 @@ namespace MyCloud.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FileData",
-                columns: table => new
-                {
-                    Name = table.Column<string>(nullable: false),
-                    Base64Code = table.Column<string>(nullable: true),
-                    CloudUserId = table.Column<string>(nullable: true),
-                    Folder = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileData", x => x.Name);
-                    table.ForeignKey(
-                        name: "FK_FileData_AspNetUsers_CloudUserId",
-                        column: x => x.CloudUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Folder",
                 columns: table => new
                 {
@@ -186,6 +166,26 @@ namespace MyCloud.Migrations
                         name: "FK_Folder_AspNetUsers_CloudUserId",
                         column: x => x.CloudUserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FileData",
+                columns: table => new
+                {
+                    Name = table.Column<string>(nullable: false),
+                    Base64Code = table.Column<string>(nullable: true),
+                    Folder = table.Column<string>(nullable: true),
+                    FolderId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileData", x => x.Name);
+                    table.ForeignKey(
+                        name: "FK_FileData_Folder_FolderId",
+                        column: x => x.FolderId,
+                        principalTable: "Folder",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -228,9 +228,9 @@ namespace MyCloud.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_FileData_CloudUserId",
+                name: "IX_FileData_FolderId",
                 table: "FileData",
-                column: "CloudUserId");
+                column: "FolderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Folder_CloudUserId",
@@ -259,10 +259,10 @@ namespace MyCloud.Migrations
                 name: "FileData");
 
             migrationBuilder.DropTable(
-                name: "Folder");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Folder");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
