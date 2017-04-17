@@ -46,7 +46,10 @@ namespace MyCloud.Models
                 .FirstOrDefault();
 
             var codes = userWithFiles
-                .Folders.SelectMany(f => f.Base64Files).Select(b => b.Base64Code);
+                .Folders
+                .Where(f => f.Name == folder)
+                .SelectMany(f => f.Base64Files)
+                .Select(b => b.Base64Code);
 
             return codes;
         }
@@ -99,7 +102,15 @@ namespace MyCloud.Models
 
         public async Task<bool> DeleteFolderAsync(string folderName, string identityName)
         {
-            //TODO
+            var userWithFolders = _context.CloudUsers
+                .Where(u => u.UserName == identityName)
+                .Include(u => u.Folders)
+                .FirstOrDefault();
+
+            var folder = userWithFolders.Folders.FirstOrDefault(f => f.Name == folderName);
+
+            userWithFolders.Folders.Remove(folder);
+
             return await _context.SaveChangesAsync() > 0;
 
         }
