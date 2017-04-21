@@ -181,7 +181,7 @@
                                             action: function () {
 
                                                 $http({
-                                                    url: '/api/files/deleteFolder',
+                                                    url: '/api/folders/deleteFolder',
                                                     method: "POST",
                                                     data: { name: $scope.params.folder }
 

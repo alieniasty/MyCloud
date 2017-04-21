@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCloud.Models;
+using MyCloud.Repositories;
 using MyCloud.ViewModel;
 
 namespace MyCloud.Controllers.API
@@ -12,9 +13,9 @@ namespace MyCloud.Controllers.API
     [Route("/api/[controller]/")]
     public class FilesController : Controller
     {
-        private ICloudRepository _repository;
+        private IFilesRepository _repository;
 
-        public FilesController(ICloudRepository repository)
+        public FilesController(IFilesRepository repository)
         {
             _repository = repository;
         }
@@ -62,30 +63,6 @@ namespace MyCloud.Controllers.API
             return Ok(base64FilesCodes);
         }
 
-        [HttpGet("getUserFolders")]
-        public IActionResult GetUserFolders()
-        {
-            var folders = _repository.GetFoldersByUser(User.Identity.Name);
-
-            return Ok(folders);
-        }
-
-        [HttpPost("createNewFolder")]
-        public async Task<IActionResult> CreateNewFolder([FromBody]FolderViewModel folder)
-        {
-            if (folder == null)
-            {
-                return BadRequest("Folder name was not provided.");
-            }
-
-            if (!await _repository.CreateNewFolder(folder.Name, User.Identity.Name))
-            {
-                return BadRequest();
-            }
-
-            return Created("api/[controller]/createNewFolder", true);
-        }
-
         [HttpPost("deleteFile")]
         public async Task<IActionResult> DeleteFile([FromBody]FileViewModel filevm)
         {
@@ -95,22 +72,6 @@ namespace MyCloud.Controllers.API
             }
 
             if (!await _repository.DeleteFileAsync(filevm.Base64Code, filevm.Folder , User.Identity.Name))
-            {
-                return BadRequest();
-            }
-
-            return Ok();
-        }
-
-        [HttpPost("deleteFolder")]
-        public async Task<IActionResult> DeleteFolder([FromBody] FolderViewModel folder)
-        {
-            if (folder.Name == null)
-            {
-                return BadRequest("Folder name was not provided");
-            }
-
-            if (!await _repository.DeleteFolderAsync(folder.Name, User.Identity.Name))
             {
                 return BadRequest();
             }

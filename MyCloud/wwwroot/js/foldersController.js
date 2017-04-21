@@ -21,7 +21,7 @@
                             var params = scope.$eval(attrs.enterClick);
 
                             $http({
-                                url: '/api/files/createNewFolder',
+                                url: '/api/folders/createNewFolder',
                                 method: "POST",
                                 data: {
                                     "name": params.folderName
@@ -44,7 +44,7 @@
 
         $http({
 
-            url: '/api/files/getUserFolders',
+            url: '/api/folders/getUserFolders',
             method: "GET"
 
         }).then(function(response) {

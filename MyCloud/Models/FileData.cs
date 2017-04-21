@@ -15,5 +15,7 @@ namespace MyCloud.Models
         public string Base64Code { get; set; }
 
         public string Folder { get; set; }
+        
+        public bool? IsFavourite { get; set; }
     }
 }

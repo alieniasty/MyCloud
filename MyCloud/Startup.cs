@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyCloud.Models;
+using MyCloud.Repositories;
 using MyCloud.ViewModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -39,7 +40,9 @@ namespace MyCloud
 
             services.AddSingleton(Configuration);
 
-            services.AddScoped<ICloudRepository, CloudRepository>();
+            services.AddScoped<IFilesRepository, FilesRepository>();
+
+            services.AddScoped<IFoldersRepository, FoldersRepository>();
 
             services.AddEntityFrameworkSqlite();
 
