@@ -94,7 +94,7 @@ namespace MyCloud.Controllers.API
                 return BadRequest("File code was not provided");
             }
 
-            if (!await _repository.DeleteFileAsync(filevm.Base64Code, User.Identity.Name))
+            if (!await _repository.DeleteFileAsync(filevm.Base64Code, filevm.Folder , User.Identity.Name))
             {
                 return BadRequest();
             }

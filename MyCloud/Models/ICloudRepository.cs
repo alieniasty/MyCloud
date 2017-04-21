@@ -13,7 +13,7 @@ namespace MyCloud.Models
 
         Task<bool> CreateNewFolder(string folder, string identityName);
 
-        Task<bool> DeleteFileAsync(string base64Code, string identityName);
+        Task<bool> DeleteFileAsync(string base64Code, string folder, string identityName);
 
         Task<bool> DeleteFolderAsync(string folderName, string identityName);
     }

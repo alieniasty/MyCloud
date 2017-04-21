@@ -19,6 +19,8 @@ namespace MyCloud.Models
         }
 
         public DbSet<CloudUser> CloudUsers { get; set; }
+        public DbSet<Folder> Folders { get; set; }
+        public DbSet<FileData> FileDatas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

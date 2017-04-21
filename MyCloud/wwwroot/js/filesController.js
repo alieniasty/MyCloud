@@ -100,7 +100,10 @@
 
                 url: '/api/files/deleteFile',
                 method: "POST",
-                data: { base64Code: base64UserFiles.codes[index] }
+                data: {
+                    base64Code: base64UserFiles.codes[index],
+                    folder: $scope.params.folder
+                }
 
             }).then(function () {
 
@@ -118,7 +121,10 @@
                 $http({
                     url: '/api/files/deleteFile',
                     method: "POST",
-                    data: { base64Code: base64UserFiles.codes[key] }
+                    data: {
+                        base64Code: base64UserFiles.codes[key],
+                        folder: $scope.params.folder
+                    }
 
                 });
             });

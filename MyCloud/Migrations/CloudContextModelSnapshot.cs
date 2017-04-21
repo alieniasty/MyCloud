@@ -193,7 +193,7 @@ namespace MyCloud.Migrations
 
                     b.HasIndex("FolderId");
 
-                    b.ToTable("FileData");
+                    b.ToTable("FileDatas");
                 });
 
             modelBuilder.Entity("MyCloud.Models.Folder", b =>
@@ -210,7 +210,7 @@ namespace MyCloud.Migrations
 
                     b.HasIndex("CloudUserId");
 
-                    b.ToTable("Folder");
+                    b.ToTable("Folders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -253,7 +253,7 @@ namespace MyCloud.Migrations
             modelBuilder.Entity("MyCloud.Models.FileData", b =>
                 {
                     b.HasOne("MyCloud.Models.Folder")
-                        .WithMany("Base64Files")
+                        .WithMany("FileDatas")
                         .HasForeignKey("FolderId");
                 });
 

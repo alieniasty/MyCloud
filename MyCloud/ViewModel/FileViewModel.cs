@@ -11,5 +11,8 @@ namespace MyCloud.ViewModel
     {
         [Required]
         public string Base64Code { get; set; }
+
+        [Required]
+        public string Folder { get; set; }
     }
 }

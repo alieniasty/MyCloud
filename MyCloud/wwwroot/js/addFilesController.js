@@ -14,7 +14,7 @@
 
                     formData: [
                         {
-                            folder: "folder3"
+                            folder: $scope.params.folder
                         }
                     ]
 
