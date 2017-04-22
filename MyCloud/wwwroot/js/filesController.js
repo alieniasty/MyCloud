@@ -207,5 +207,18 @@
             });
         }
 
+        $scope.shareFile = function(index) {
+            $http({
+                url: '/api/share/shareFile',
+                method: "POST",
+                data: {
+                    base64Code: base64UserFiles.codes[index],
+                    folder: $scope.params.folder
+                }
+
+            }).then(function(response) {
+                console.log(response.data);
+            });
+        }
     }
 })();

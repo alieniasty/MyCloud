@@ -9,11 +9,17 @@
             <li>
                 <a ng-click="toggleFilesInput = !toggleFilesInput">Dodaj pliki <i class="fa fa-plus fa-2x pull-right"></i></a>
             </li>
-            <li>
-                <a href="">Udostępnij pliki <i class="fa fa-share-alt fa-2x pull-right"></i></a>
-            </li>
+            
             <li>
                 <a ng-click="toggleFilesRemoval = !toggleFilesRemoval">Usuń pliki <i class="fa fa-trash fa-2x pull-right"></i></a>
+            </li>
+            <li>
+                <a href="">Udostępnij folder
+                    <span class="fa-stack pull-right">
+                        <i class="fa fa-folder-o fa-stack-2x"></i>
+                        <i class="fa fa-share-alt fa-stack-1x"></i>
+                    </span>
+                </a>
             </li>
             <li>
                 <a href="">Przenieś pliki 
@@ -24,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="" ng-click="folderRemovalClick()">Usuń folder
+                <a ng-click="folderRemovalClick()">Usuń folder
                     <span class="fa-stack pull-right">
                         <i class="fa fa-folder-o fa-stack-2x"></i>
                         <i class="fa fa-trash fa-stack-1x"></i>
@@ -38,9 +44,8 @@
         
         <div class="modal" id="js-modal">
             <div class="modal-control-wrapper">
-                <span class="modal-control"  ng-click="deleteFile(selected.value)"><i class="fa fa-trash"></i> Usuń</span>
-                <span class="modal-control"><i class="fa fa-share-alt"></i> Udostępnij</span>
-                <span class="modal-control"><i class="fa fa-star"></i> Ulubione</span>
+                <span class="modal-control" ng-click="deleteFile(selected.value)"><i class="fa fa-trash"></i> Usuń</span>
+                <span class="modal-control" ng-click="shareFile(selecte.value)"><i class="fa fa-share-alt"></i> Udostępnij</span>
             </div>
             <span class="close">&times;</span>
 

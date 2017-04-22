@@ -15,6 +15,8 @@ namespace MyCloud.Models
         [Required]
         public string Name { get; set; }
 
+        public string SharingUrl { get; set; }
+
         public ICollection<FileData> FileDatas { get; set; }
     }
 }

@@ -157,7 +157,8 @@ namespace MyCloud.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CloudUserId = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    SharingUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -175,9 +176,10 @@ namespace MyCloud.Migrations
                 columns: table => new
                 {
                     Name = table.Column<string>(nullable: false),
-                    Base64Code = table.Column<string>(nullable: true),
+                    Base64Code = table.Column<string>(nullable: false),
                     Folder = table.Column<string>(nullable: true),
-                    FolderId = table.Column<int>(nullable: true)
+                    FolderId = table.Column<int>(nullable: true),
+                    SharingUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

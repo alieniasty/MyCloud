@@ -44,6 +44,8 @@ namespace MyCloud
 
             services.AddScoped<IFoldersRepository, FoldersRepository>();
 
+            services.AddScoped<ISharingRepository, SharingRepository>();
+
             services.AddEntityFrameworkSqlite();
 
             services

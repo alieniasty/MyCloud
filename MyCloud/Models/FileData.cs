@@ -11,11 +11,12 @@ namespace MyCloud.Models
     {
         [Key]
         public string Name { get; set; }
-
+        
+        [Required]
         public string Base64Code { get; set; }
 
         public string Folder { get; set; }
-        
-        public bool? IsFavourite { get; set; }
+
+        public string SharingUrl { get; set; }
     }
 }

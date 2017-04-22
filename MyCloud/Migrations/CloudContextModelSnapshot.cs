@@ -183,13 +183,14 @@ namespace MyCloud.Migrations
                     b.Property<string>("Name")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Base64Code");
+                    b.Property<string>("Base64Code")
+                        .IsRequired();
 
                     b.Property<string>("Folder");
 
                     b.Property<int?>("FolderId");
 
-                    b.Property<bool?>("IsFavourite");
+                    b.Property<string>("SharingUrl");
 
                     b.HasKey("Name");
 
@@ -207,6 +208,8 @@ namespace MyCloud.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<string>("SharingUrl");
 
                     b.HasKey("Id");
 
