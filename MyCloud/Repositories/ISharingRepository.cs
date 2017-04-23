@@ -9,7 +9,7 @@ namespace MyCloud.Repositories
 
         Task<bool> AddSharedFolder(string accessUrl, FolderViewModel vm, string identityName);
 
-        string GetSharedFile(string accessUrl);
+        Task<string> GetSharedFile(string accessUrl);
 
         string GetSharedFolder(string accessUrl);
     }

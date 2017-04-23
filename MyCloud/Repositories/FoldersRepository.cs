@@ -48,9 +48,9 @@ namespace MyCloud.Repositories
                 .Include(u => u.Folders)
                 .FirstOrDefault();
 
-            var folder = userWithFolders.Folders.FirstOrDefault(f => f.Name == folderName);
+            var folderToBeRemoved = userWithFolders.Folders.FirstOrDefault(f => f.Name == folderName);
 
-            userWithFolders.Folders.Remove(folder);
+            userWithFolders.Folders.Remove(folderToBeRemoved);
 
             return await _context.SaveChangesAsync() > 0;
 

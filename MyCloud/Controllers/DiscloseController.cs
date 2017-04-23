@@ -8,21 +8,21 @@ using MyCloud.Repositories;
 
 namespace MyCloud.Controllers
 {
-    public class SharedController : Controller
+    public class DiscloseController : Controller
     {
         private ISharingRepository _repository;
 
-        public SharedController(ISharingRepository repository)
+        public DiscloseController(ISharingRepository repository)
         {
             _repository = repository;
         }
 
-        public IActionResult File()
+        public async Task<IActionResult> File()
         {
             var accessUrl = RouteData.Values["id"];
-            var file = _repository.GetSharedFile(accessUrl as string);
+            var fileCode = await _repository.GetSharedFile(accessUrl as string);
 
-            return View();
+            return View((object)fileCode);
         }
 
         public IActionResult Folder()

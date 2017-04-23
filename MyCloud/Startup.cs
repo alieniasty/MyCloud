@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyCloud.Models;
 using MyCloud.Repositories;
+using MyCloud.Services;
 using MyCloud.ViewModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -45,6 +46,8 @@ namespace MyCloud
             services.AddScoped<IFoldersRepository, FoldersRepository>();
 
             services.AddScoped<ISharingRepository, SharingRepository>();
+
+            services.AddTransient<IRandomUrl, RandomUrl>();
 
             services.AddEntityFrameworkSqlite();
 
