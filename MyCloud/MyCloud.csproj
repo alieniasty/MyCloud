@@ -18,6 +18,7 @@
     <Content Include="wwwroot\css\register.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="wwwroot\css\sharedFile.css" />
     <Content Include="wwwroot\img\cloud-img.ico" />
     <Content Include="wwwroot\img\cloud-img-white.ico" />
     <Content Include="wwwroot\img\folder-img.png" />

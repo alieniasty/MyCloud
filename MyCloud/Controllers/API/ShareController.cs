@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using MyCloud.Repositories;
@@ -12,6 +13,7 @@ using MyCloud.ViewModel;
 
 namespace MyCloud.Controllers.API
 {
+    [Authorize]
     [Route("/api/[controller]/")]
     public class ShareController : Controller
     {

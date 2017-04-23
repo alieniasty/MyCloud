@@ -216,8 +216,25 @@
                     folder: $scope.params.folder
                 }
 
-            }).then(function(response) {
-                console.log(response.data);
+            }).then(function (response) {
+                $("#js-modal").css('display', 'block');
+
+                $.confirm({
+                    icon: 'fa fa-link',
+                    title: 'Udostępnianie',
+                    content: '' +
+                    '<form class="formName">' +
+                    '<div class="form-group">' +
+                    '<label> Skopiuj ten link i wyślij osobie której chcesz udostępnić ten obraz </label>' +
+                    '<textarea class="share-link-textarea">' + response.data + '</textarea>' +
+                    '</div>' +
+                    '</form>',
+                    buttons: {
+                        OK: function () {
+                            return true;
+                        }
+                    }
+                });
             });
         }
     }

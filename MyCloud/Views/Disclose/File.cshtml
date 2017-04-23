@@ -1,5 +1,14 @@
 ﻿@model string
+@section Scripts
+{
+    <link href="~/css/sharedFile.css" rel="stylesheet" />
+}
 
-<h1>@Model</h1>
+<div class="shared-wrapper">
+    
+    <div class="shared-control-wrapper">
+        <span class="shared-control"><i class="fa fa-trash"></i> Pobierz</span>
+    </div>
 
-@*JSowa magia*@
+    <img src="data:image/png;base64,@Model" alt="Picture" class="shared-img"/>
+</div>

@@ -16,7 +16,7 @@ namespace MyCloud.Services
 
             Random random = new Random();
 
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 9; i++)
             {
                 randomText.Append(charPool[(int)(random.NextDouble() * charPool.Length)]);
             }

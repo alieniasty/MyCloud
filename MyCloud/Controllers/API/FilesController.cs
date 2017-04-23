@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCloud.Models;
@@ -10,6 +11,7 @@ using MyCloud.ViewModel;
 
 namespace MyCloud.Controllers.API
 {
+    [Authorize]
     [Route("/api/[controller]/")]
     public class FilesController : Controller
     {
