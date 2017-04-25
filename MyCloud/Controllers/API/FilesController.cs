@@ -80,5 +80,21 @@ namespace MyCloud.Controllers.API
 
             return Ok();
         }
+
+        [HttpPost("moveSelectedFiles")]
+        public async Task<IActionResult> MoveSelectedFiles([FromBody]MovedFilesViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                if (await _repository.MoveFilesAsync(vm.Codes, vm.CurrentFolder, vm.NewFolder))
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+
+            return BadRequest();
+        }
     }
 }

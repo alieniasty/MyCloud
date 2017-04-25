@@ -62,8 +62,10 @@
         var base64UserFiles = this;
 
         base64UserFiles.codes = [];
+        base64UserFiles.folders = [];
         base64UserFiles.selectedIndexes = [];
         base64UserFiles.isGettingPreviews = true;
+        $scope.selected = { value: 0 };
 
         $http({
 
@@ -84,8 +86,6 @@
                     base64UserFiles.isGettingPreviews = false;
                 });
         });
-
-        $scope.selected = { value: 0 };
 
         $scope.nextPicture = function (index) {
             if (index >= 0 && index < base64UserFiles.codes.length) {
@@ -127,6 +127,30 @@
                     }
 
                 });
+            });
+
+            base64UserFiles.isGettingPreviews = false;
+            $state.go($state.current, {}, { reload: true });
+        }
+
+        $scope.moveSelectedFiles = function (selectedFiles, selectedFolder) {
+
+            base64UserFiles.isGettingPreviews = true;
+            var codesOfFilesToMove = [];
+
+            angular.forEach(selectedFiles, function (key) {
+                codesOfFilesToMove.push(base64UserFiles.codes[key]);
+            });
+
+            $http({
+                url: '/api/files/moveFiles',
+                method: "POST",
+                data: {
+                    codes: codesOfFilesToMove,
+                    currentFolder: $scope.params.folder,
+                    newFolder: selectedFolder
+                }
+
             });
 
             base64UserFiles.isGettingPreviews = false;
@@ -236,6 +260,58 @@
                     }
                 });
             });
+        }
+
+        $scope.shareFolder = function() {
+            $http({
+                url: '/api/share/shareFolder',
+                method: "POST",
+                data: {
+                    name: $scope.params.folder
+                }
+
+            }).then(function (response) {
+                $.confirm({
+                    icon: 'fa fa-link',
+                    title: 'Udostępnianie',
+                    content: '' +
+                    '<form class="formName">' +
+                    '<div class="form-group">' +
+                    '<label> Skopiuj ten link i wyślij osobie której chcesz udostępnić ten folder </label>' +
+                    '<textarea class="share-link-textarea">' + response.data + '</textarea>' +
+                    '</div>' +
+                    '</form>',
+                    buttons: {
+                        OK: function () {
+                            return true;
+                        }
+                    }
+                });
+            });
+        }
+
+        $scope.getUserFolders = function () {
+            if (base64UserFiles.folders.length === 0)
+            {
+                $http({
+
+                    url: '/api/folders/getUserFolders',
+                    method: "GET"
+
+                }).then(function (response) {
+
+                    if (!response.data) {
+                        base64UserFiles.isGettingPreviews = false;
+                        return;
+                    }
+
+                    angular.forEach(response.data,
+                        function (key, value) {
+                            base64UserFiles.folders.push(key);
+                            base64UserFiles.isGettingPreviews = false;
+                        });
+                });
+            }
         }
     }
 })();

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MyCloud.ViewModel;
 
 namespace MyCloud.Repositories
@@ -11,6 +12,6 @@ namespace MyCloud.Repositories
 
         Task<string> GetSharedFile(string accessUrl);
 
-        string GetSharedFolder(string accessUrl);
+        IEnumerable<string> GetSharedFolder(string accessUrl);
     }
 }

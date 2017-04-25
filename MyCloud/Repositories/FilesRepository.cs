@@ -74,5 +74,10 @@ namespace MyCloud.Repositories
 
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public Task<bool> MoveFilesAsync(List<string> codesOfFilesToMove, string currentFolder, string newFolder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

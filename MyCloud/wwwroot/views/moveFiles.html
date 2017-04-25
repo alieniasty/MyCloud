@@ -1,0 +1,19 @@
+﻿<div class="btn-img-preview-group col-md-4 col-md-offset-4 animated slideInDown">
+    <button class="btn btn-img-preview btn-info" ng-click="moveSelectedFiles(base64UserFiles.selectedIndexes, selectedFolder)">
+        <span> Przenieś: </span> <span>{{base64UserFiles.selectedIndexes.length}}</span>
+        <i class="fa fa-arrow-right"></i>
+    </button>
+
+    <div ng-init="getUserFolders()" class="move-folder-select-wrapper">
+        <select class="move-folder-select" ng-model="selectedFolder">
+            <option ng-repeat="folder in base64UserFiles.folders">{{folder}}</option>
+        </select>
+    </div>
+
+        <button class="btn btn-img-preview btn-warning" ng-click="clearSelections()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <span> Anuluj </span>
+        </button>
+
+        <hr />
+    </div>

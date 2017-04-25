@@ -49,7 +49,7 @@ namespace MyCloud.Controllers.API
             return BadRequest("Model state is not valid");
         }
 
-        [HttpPost("shareSingleFile")]
+        [HttpPost("shareFolder")]
         public async Task<IActionResult> ShareFolder([FromBody]FolderViewModel vm)
         {
             if (ModelState.IsValid)

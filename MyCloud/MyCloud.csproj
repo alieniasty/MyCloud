@@ -19,6 +19,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\css\sharedFile.css" />
+    <Content Include="wwwroot\css\sharedFolder.css" />
     <Content Include="wwwroot\img\cloud-img.ico" />
     <Content Include="wwwroot\img\cloud-img-white.ico" />
     <Content Include="wwwroot\img\folder-img.png" />
@@ -28,13 +29,16 @@
     <Content Include="wwwroot\js\filesController.js" />
     <Content Include="wwwroot\js\foldersController.js" />
     <Content Include="wwwroot\js\login.js" />
+    <Content Include="wwwroot\js\sharedFolderModule.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiFolders.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
     <Content Include="wwwroot\js\uiSelect.js" />
+    <Content Include="wwwroot\js\uiSharedFiles.js" />
     <Content Include="wwwroot\views\addFiles.html" />
     <Content Include="wwwroot\views\filesView.html" />
     <Content Include="wwwroot\views\foldersView.html" />
+    <Content Include="wwwroot\views\moveFiles.html" />
     <Content Include="wwwroot\views\newFolder.html" />
     <Content Include="wwwroot\views\panelView.html" />
     <Content Include="wwwroot\views\removeFiles.html" />

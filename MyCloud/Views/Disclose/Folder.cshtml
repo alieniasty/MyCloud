@@ -1,1 +1,26 @@
-﻿
+﻿@model IEnumerable<string>
+
+@section Scripts
+{
+    <link href="~/css/sharedFolder.css" rel="stylesheet" />
+
+    <script src="~/js/uiSharedFiles.js"></script>
+}
+
+<div class="images-wrapper col-md-10 col-md-offset-1">
+    
+    @foreach (string element in Model)
+    {
+        <img src="data:image/png;base64,@element" class="img-snippet"/>
+    }
+
+</div>
+
+<div class="modal" id="js-modal">
+    <div class="modal-control-wrapper">
+        <span class="modal-control"><i class="fa fa-download"></i> Pobierz</span>
+    </div>
+    <span class="close">&times;</span>
+
+    <img src="" alt="Picture" id="js-img-modal" class="img-modal" />
+</div>

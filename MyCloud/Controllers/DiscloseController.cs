@@ -28,9 +28,9 @@ namespace MyCloud.Controllers
         public IActionResult Folder()
         {
             var accessUrl = RouteData.Values["id"];
-            var folder = _repository.GetSharedFolder(accessUrl as string);
+            var filesCodes = _repository.GetSharedFolder(accessUrl as string);
 
-            return View();
+            return View(filesCodes);
         }
     }
 }

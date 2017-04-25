@@ -57,9 +57,15 @@ namespace MyCloud.Repositories
             return sharedFile.Base64Code;
         }
 
-        public string GetSharedFolder(string accessUrl)
+        public IEnumerable<string> GetSharedFolder(string accessUrl)
         {
-            throw new NotImplementedException();
+            var sharedFolder = _context.Folders
+                .Include(f => f.FileDatas)
+                .FirstOrDefault(f => f.SharingUrl == accessUrl);
+
+            var codes = sharedFolder.FileDatas.Select(f => f.Base64Code).ToList();
+
+            return codes;
         }
     }
 }

@@ -253,3 +253,15 @@ select-preview {
     width: 330px;
     height: 53px;
 }
+
+.move-folder-select {
+    border: 5px solid #31B0D5;
+    border-radius: 5px;
+    font-size: 1.2em;
+    padding-bottom: 7px;
+    border-width: 3px;
+}
+
+.move-folder-select-wrapper {
+    display: inline;
+}
