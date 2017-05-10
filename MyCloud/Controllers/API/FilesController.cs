@@ -82,11 +82,11 @@ namespace MyCloud.Controllers.API
         }
 
         [HttpPost("moveSelectedFiles")]
-        public async Task<IActionResult> MoveSelectedFiles([FromBody]MovedFilesViewModel vm)
+        public async Task<IActionResult> MoveSelectedFiles([FromBody]MovedFilesViewModel vm) 
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if (await _repository.MoveFilesAsync(vm.Codes, vm.CurrentFolder, vm.NewFolder))
+                if (await _repository.MoveFilesAsync(vm.Codes, vm.CurrentFolder, vm.NewFolder, User.Identity.Name))
                 {
                     return Ok();
                 }

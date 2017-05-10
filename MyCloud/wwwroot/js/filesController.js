@@ -143,7 +143,7 @@
             });
 
             $http({
-                url: '/api/files/moveFiles',
+                url: '/api/files/moveSelectedFiles',
                 method: "POST",
                 data: {
                     codes: codesOfFilesToMove,
@@ -195,7 +195,7 @@
                                 return false;
                             }
 
-                            if (name == $scope.params.folder) {
+                            if (name === $scope.params.folder) {
                                 $.confirm({
                                     title: 'Czy na pewno chcesz usunąć folder:',
                                     content: '<strong>' + name + ' ?' + '</strong>',

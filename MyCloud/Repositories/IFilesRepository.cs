@@ -11,6 +11,6 @@ namespace MyCloud.Repositories
 
         Task<bool> DeleteFileAsync(string base64Code, string folder, string identityName);
 
-        Task<bool> MoveFilesAsync(List<string> codesOfFilesToMove, string currentFolder, string newFolder);
+        Task<bool> MoveFilesAsync(List<string> codesOfFilesToMove, string currentFolder, string newFolder, string identityName);
     }
 }

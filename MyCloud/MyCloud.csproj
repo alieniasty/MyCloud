@@ -29,7 +29,6 @@
     <Content Include="wwwroot\js\filesController.js" />
     <Content Include="wwwroot\js\foldersController.js" />
     <Content Include="wwwroot\js\login.js" />
-    <Content Include="wwwroot\js\sharedFolderModule.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiFolders.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
