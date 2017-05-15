@@ -15,8 +15,14 @@
             .state("folders",
             {
                 url: "/folders",
-                controllers: "foldersController",
+                controller: "foldersController",
                 templateUrl: "/views/foldersView.html"
+            })
+            .state("favorities",
+            {
+                url: "favorities",
+                controller: "favoritiesController",
+                templateUrl: "/views/favoritiesView.html"
             })
             .state("files",
             {

@@ -18,6 +18,7 @@
     <script src="~/js/filesController.js"></script>
     <script src="~/js/foldersController.js"></script>
     <script src="~/js/addFilesController.js"></script>
+    <script src="~/js/favoritiesController.js"></script>
 }
 
 <div ng-app="appPanel">
@@ -33,7 +34,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="folders"><i class="fa fa-folder" aria-hidden="true"></i> <p>Moje pliki</p></a></li>
-                    <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> <p>Udostępnione</p></a></li>
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <p>Ulubione</p></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <p> @Model.Username</p></a></li>
