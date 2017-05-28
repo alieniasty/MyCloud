@@ -26,14 +26,12 @@
     <Content Include="wwwroot\img\raspberrypi.ico" />
     <Content Include="wwwroot\js\addFilesController.js" />
     <Content Include="wwwroot\js\appPanel.js" />
-    <Content Include="wwwroot\js\favoritiesController.js" />
     <Content Include="wwwroot\js\filesController.js" />
     <Content Include="wwwroot\js\foldersController.js" />
     <Content Include="wwwroot\js\login.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiFolders.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
-    <Content Include="wwwroot\js\uiSelect.js" />
     <Content Include="wwwroot\js\uiSharedFiles.js" />
     <Content Include="wwwroot\views\addFiles.html" />
     <Content Include="wwwroot\views\favoritiesView.html" />
