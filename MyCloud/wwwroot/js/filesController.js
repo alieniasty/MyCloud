@@ -17,6 +17,7 @@
                         var canvas = element.find('canvas');
 
                         var img = new Image();
+
                         img.src = "data:image/png;base64,".concat(params.base64Code);
 
                         img.onload = function () {
@@ -66,7 +67,7 @@
         base64UserFiles.selectedIndexes = [];
         base64UserFiles.isGettingPreviews = true;
         $scope.selected = { value: 0 };
-
+        
         $http({
 
             url: '/api/files/getJsonFiles',
@@ -164,7 +165,9 @@
             {
                 base64UserFiles.selectedIndexes.push(index);
             } else {
-                base64UserFiles.selectedIndexes = base64UserFiles.selectedIndexes.filter(item => item !== index);
+                base64UserFiles.selectedIndexes = base64UserFiles.selectedIndexes.filter(function (item) {
+                    return item !== index;
+                });
             }
         } 
 

@@ -1,0 +1,1 @@
+$(document).ready(function(){var n=$("#sidebar, #wrapper");$("#sidebar-btn").click(function(){n.toggleClass("hide-sidebar")}),$(".close").on("click",function(){$("#js-modal").css("display","none")})});

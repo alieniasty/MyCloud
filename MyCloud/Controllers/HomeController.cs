@@ -86,7 +86,6 @@ namespace MyCloud.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Username, password, confirmation pass or email is incorrect");
             return View();
         }
     }

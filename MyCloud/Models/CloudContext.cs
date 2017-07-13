@@ -26,7 +26,7 @@ namespace MyCloud.Models
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlite("Filename=./TinyHubDatabase.db");
+            optionsBuilder.UseSqlite("Filename=./MyCloudDB.db");
         }
     }
 }

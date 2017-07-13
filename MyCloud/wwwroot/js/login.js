@@ -1,4 +1,4 @@
-﻿$(document).ready(() => {
+﻿$(document).ready(function () {
     $("#js-eye-switch").click(function() {
 
         var eyeElement = $("#js-eye");

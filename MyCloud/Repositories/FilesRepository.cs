@@ -4,16 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyCloud.Models;
+using MyCloud.Services;
 
 namespace MyCloud.Repositories
 {
     public class FilesRepository : IFilesRepository
     {
         private CloudContext _context;
+        private IRaspberryFiles _raspberry;
 
-        public FilesRepository(CloudContext context)
+        public FilesRepository(CloudContext context, IRaspberryFiles raspberry)
         {
             _context = context;
+            _raspberry = raspberry;
         }
 
         public async Task<bool> AddNewFileAsync(string base64File, string identityName, string fileName, string folder)
@@ -26,20 +29,24 @@ namespace MyCloud.Repositories
             var userFolder = user.Folders
                 .SingleOrDefault(f => f.Name == folder);
 
+            var newFile = new FileData
+            {
+                Base64Code = base64File,
+                Name = $"{DateTime.Now:yyyy-MM-dd}_{fileName}",
+                Folder = folder
+            };
+
+            await _raspberry.SaveFileToUsb(newFile.Base64Code, newFile.Name);
+
             userFolder.FileDatas
-                .Add(new FileData
-                {
-                    Base64Code = base64File,
-                    Name = $"{DateTime.Now}_{fileName}",
-                    Folder = folder
-                });
+                .Add(newFile);
 
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public IEnumerable<string> GetBase64Files(string folder, string identityName)
+        public async Task<IEnumerable<string>> GetBase64Files(string folder, string identityName)
         {
-            var userFiles = _context.CloudUsers
+            var userFiles = await _context.CloudUsers
                 .Where(u => u.UserName == identityName)
                 .Include(t => t.Folders)
                 .ThenInclude(f => f.FileDatas)
@@ -47,7 +54,7 @@ namespace MyCloud.Repositories
                 .SelectMany(f => f.Folders)
                 .Where(f => f.Name == folder)
                 .SelectMany(f => f.FileDatas)
-                .ToList();
+                .ToListAsync();
 
 
             var codes = userFiles
@@ -69,6 +76,7 @@ namespace MyCloud.Repositories
 
             var fileToBeRemoved = userFolder.FileDatas.FirstOrDefault(fd => fd.Base64Code == base64Code);
 
+            await _raspberry.RemoveFileFromUsb(fileToBeRemoved.Name);
 
             userFolder.FileDatas.Remove(fileToBeRemoved);
 

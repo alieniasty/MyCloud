@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCloud.Models;
 using MyCloud.Repositories;
+using MyCloud.Services;
 using MyCloud.ViewModel;
 
 namespace MyCloud.Controllers.API
@@ -16,10 +17,12 @@ namespace MyCloud.Controllers.API
     public class FilesController : Controller
     {
         private IFilesRepository _repository;
+        private IRaspberryFiles _raspberry;
 
-        public FilesController(IFilesRepository repository)
+        public FilesController(IFilesRepository repository, IRaspberryFiles raspberry)
         {
             _repository = repository;
+            _raspberry = raspberry;
         }
         
         [HttpPost("upload")]
@@ -41,21 +44,21 @@ namespace MyCloud.Controllers.API
                     return Created("/api/[controller]/upload", file);
                 }
 
-                return BadRequest($"Creation failed: {file}");
+                return BadRequest("Creation failed");
             }
 
             return BadRequest("File is null");
         }
 
         [HttpGet("getJsonFiles")]
-        public IActionResult GetJsonFiles(string folder)
+        public async Task<IActionResult> GetJsonFiles(string folder)
         {
             if (folder == null)
             {
                 return BadRequest("No folder name was provided");
             }
 
-            var base64FilesCodes = _repository.GetBase64Files(folder, User.Identity.Name);
+            var base64FilesCodes = await _repository.GetBase64Files(folder, User.Identity.Name);
             
             if (base64FilesCodes == null || !base64FilesCodes.Any())
             {

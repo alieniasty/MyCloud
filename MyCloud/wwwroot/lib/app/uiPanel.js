@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#js-navbar-toggle").on("click",function(){var a=$("#js-navbar-toggle");a.hasClass("collapsed")?(a.removeClass("fa fa-toggle-off"),a.addClass("fa fa-toggle-on")):(a.removeClass("fa fa-toggle-on"),a.addClass("fa fa-toggle-off"))})});

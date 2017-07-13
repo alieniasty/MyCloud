@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#js-eye-switch").click(function(){var a=$("#js-eye");console.debug(a),a.hasClass("fa fa-eye")?(a.removeClass("fa fa-eye").addClass("fa fa-eye-slash"),$("#js-input-password").attr("type","text")):(a.removeClass("fa fa-eye-slash").addClass("fa fa-eye"),$("#js-input-password").attr("type","password"))})});
