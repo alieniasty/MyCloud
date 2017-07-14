@@ -24,6 +24,8 @@ namespace MyCloud
     {
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -33,6 +35,7 @@ namespace MyCloud
         }
 
         public IConfigurationRoot Configuration { get; }
+        private IHostingEnvironment _env;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -69,7 +72,10 @@ namespace MyCloud
 
             services.AddMvc(config =>
             {
-                config.Filters.Add(new RequireHttpsAttribute());
+                if (_env.IsProduction())
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
 
             }).AddJsonOptions(config =>
             {
