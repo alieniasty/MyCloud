@@ -30,6 +30,7 @@
     <Content Include="wwwroot\js\filesController.js" />
     <Content Include="wwwroot\js\foldersController.js" />
     <Content Include="wwwroot\js\login.js" />
+    <Content Include="wwwroot\js\panelController.js" />
     <Content Include="wwwroot\js\uiFiles.js" />
     <Content Include="wwwroot\js\uiFolders.js" />
     <Content Include="wwwroot\js\uiPanel.js" />
@@ -61,6 +62,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0-msbuild3-final" />
+    <PackageReference Include="System.IO.FileSystem.DriveInfo" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />

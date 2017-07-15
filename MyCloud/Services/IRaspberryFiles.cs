@@ -11,5 +11,7 @@ namespace MyCloud.Services
     {
         Task SaveFileToUsb(string newFileBase64Code, string newFileName);
         Task RemoveFileFromUsb(string name);
+        long GetUsedSpace();
+        long GetTotalSpace();
     }
 }

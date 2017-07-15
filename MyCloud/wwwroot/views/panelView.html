@@ -1,22 +1,19 @@
-﻿<div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 used-space-info">
-    <span>Wykorzystujesz 50 GB z 100 GB</span>
-</div>
+﻿<div ng-controller="panelController as disk">
+    <div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 used-space-info">
+        <span>Wykorzystujesz {{disk.usedSpace}} GB z {{disk.totalSpace}} GB</span>
+    </div>
 
-<div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 used-space-circle">
-    <div class="c100 p50 big green">
-        <span>50%</span>
-        <div class="slice">
-            <div class="bar"></div>
-            <div class="fill"></div>
+    <div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 used-space-circle">
+        <div class="c100 p100 big green">
+            <span>{{(disk.usedSpace/disk.totalSpace)*100 | number:2}}%</span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 used-space-info">
-    <span>Pozostałe miejsce: 50 GB</span>
-</div>
-
-<div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 raspberry-ico">
-    <img src="/img/raspberrypi.ico" alt="Raspberry" id="raspberry" class="cloud-navigation-img"/>
-    <span>Status: odłączone</span>
+    <div class="col-md-2 col-md-offset-5 col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 used-space-info">
+        <span>Pozostałe miejsce: {{disk.totalSpace - disk.usedSpace}} GB</span>
+    </div>
 </div>

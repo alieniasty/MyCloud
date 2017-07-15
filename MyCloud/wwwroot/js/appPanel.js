@@ -10,6 +10,7 @@
             .state("panel",
             {
                 url: "/",
+                controller: "panelController",
                 templateUrl: "/views/panelView.html"
             })
             .state("folders",

@@ -28,5 +28,24 @@ namespace MyCloud.Services
         {
             return Task.Run(() => File.Delete($"{_config["Storage:HardDrive"]}\\{name}"));
         }
+
+        public long GetUsedSpace()
+        {
+            var allDrives = DriveInfo.GetDrives();
+            var label = $"{_config["Storage:HardDrive"]}\\".ToUpper();
+            var drive = allDrives.SingleOrDefault(d => d.Name == label);
+
+            return drive.TotalSize - drive.TotalFreeSpace;
+        }
+
+        public long GetTotalSpace()
+        {
+            var allDrives = DriveInfo.GetDrives();
+
+            var label = $"{_config["Storage:HardDrive"]}\\".ToUpper();
+            var drive = allDrives.SingleOrDefault(d => d.Name == label);
+
+            return drive.TotalSize;
+        }
     }
 }
