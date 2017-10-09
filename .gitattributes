@@ -2,7 +2,7 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-MyCloud/MyCloud/wwwroot/lib/ linguist-vendored
+MyCloud/MyCloud/wwwroot/lib/* linguist-vendored
 * linguist-vendored
 *.cs linguist-vendored=false
 *.js linguist-vendored=false
