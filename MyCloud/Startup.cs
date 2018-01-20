@@ -55,6 +55,8 @@ namespace MyCloud
 
             services.AddTransient<IRaspberryFiles, RaspberryFiles>();
 
+            services.AddTransient<ContextSeedData>();
+
             services.AddEntityFrameworkSqlite();
 
             services
@@ -66,7 +68,6 @@ namespace MyCloud
                     config.Password.RequireDigit = false;
                     config.Password.RequireLowercase = false;
                     config.Password.RequiredLength = 8;
-                    config.Cookies.ApplicationCookie.LoginPath = "/Home/Login";
                 })
                 .AddEntityFrameworkStores<CloudContext>();
 
