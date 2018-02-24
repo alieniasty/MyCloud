@@ -9,5 +9,7 @@ A year after the project's release, many issues from external libraries were dis
 
 Login credentials for a website:
 
+https://chmurunia.azurewebsites.net/
+
 Login - **Test**<br />
 Password - **P@ssw0rd!!!%**
